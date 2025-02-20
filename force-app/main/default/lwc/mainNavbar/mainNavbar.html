@@ -1,0 +1,8 @@
+<template>
+    <template if:false={isLoggedIn}>
+        <c-navigation-bar></c-navigation-bar>
+    </template>
+    <template if:true={isLoggedIn}>
+        <c-login-navbar></c-login-navbar>
+    </template>
+</template>
