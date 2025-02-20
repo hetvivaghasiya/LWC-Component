@@ -1,3 +1,33 @@
 <template>
-    
-</template>
+    <div class="card-container">
+        <div class="card"> 
+
+          <div class="profile-img">
+              <img src={profileImageUrl} alt="Avatar" style="width:100%">
+          </div>
+          <template if:true={studentData}>
+                <h1>{studentData.Name__c}</h1>
+                <!-- <p>Frontend Developer</p>
+                <ul>
+                    <li><span>Email:</span> username@example.com</li>
+                    <li><span>Phone:</span> (91+) 123-123-1234</li>
+                    <li><span>Location:</span> India</li>
+                </ul> -->
+          </template>
+
+          <!-- Upload Section -->
+          <div>
+            <input type="file" accept="image/*" onchange={handleFileChange} />
+            <button onclick={handleUpload}>Upload Image</button>
+        </div>
+
+    <!-- Success & Error Messages -->
+          <template if:true={uploadSuccessMessage}>
+                <p class="slds-text-color_success slds-m-top_small">{uploadSuccessMessage}</p>
+          </template>
+          <template if:true={uploadErrorMessage}>
+                <p class="slds-text-color_error slds-m-top_small">{uploadErrorMessage}</p>
+          </template>
+        </div>
+      </div>
+    </template>

@@ -29,25 +29,26 @@ export default class LoginStudent extends NavigationMixin(LightningElement) {
 
         // Validation: Ensure ID and Password are entered
         if (!this.studentId || !this.password) {
-            this.errorMessage = '⚠️ Please enter both Student ID and Password.';
+            this.errorMessage = 'Please enter both Student ID and Password.';
             return;
         }
 
         // Validation: Ensure Student ID follows correct format
         const idPattern = /^[A-Za-z0-9-_]+$/;
         if (!idPattern.test(this.studentId)) {
-            this.errorMessage = '⚠️ Invalid Student ID format. Use letters, numbers, hyphens, or underscores only.';
+            this.errorMessage = 'Invalid Student ID format. Use letters, numbers, hyphens, or underscores only.';
             return;
         }
 
         checkStudentId({ studentId: this.studentId, password: this.password })
         .then((result) => {
             if (result) {
-                this.successMessage = `✅ Login successful! Welcome, ${this.studentId}.`;
+                this.successMessage = `Login successful! Welcome, ${this.studentId}.`;
                 this.errorMessage = '';
 
                 // Store login state
                 localStorage.setItem('isLoggedIn', 'true');
+
                 sessionStorage.setItem('studentId', this.studentId);//session data store 
 
                 // // Redirect to home page
@@ -63,11 +64,11 @@ export default class LoginStudent extends NavigationMixin(LightningElement) {
                 },100); 
 
             } else {
-                this.errorMessage = '❌ Invalid Student ID or Password. Please try again.';
+                this.errorMessage = ' Invalid Student ID or Password. Please try again.';
             }
         })
         .catch((error) => {
-            this.errorMessage = '❌ Error occurred while verifying login.';
+            this.errorMessage = 'Error occurred while verifying login.';
             console.error('Error: ', error);
         });
 }

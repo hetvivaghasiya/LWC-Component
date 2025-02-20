@@ -1,8 +1,20 @@
 import { LightningElement } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
 
-export default class LoginNavbar extends LightningElement {
+
+export default class LoginNavbar extends NavigationMixin(LightningElement) {
     handleLogout() {
         localStorage.removeItem('isLoggedIn');
-        location.reload(); // Refresh to show Simple Navigation Bar
+         // // Redirect to home page
+         this[NavigationMixin.Navigate]({
+            type: 'comm__namedPage',
+            attributes: {
+                name:"Home",
+            }
+        });
+        
+        setTimeout(() => {
+            window.location.reload(); // Reload after redirect
+        },100); 
     }
 }
