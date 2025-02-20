@@ -1,0 +1,122 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+h1{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: larger;
+    color: #FFFFFF;
+    font-weight: bolder;
+}
+header{
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    background-color: #5E5E4A;
+}
+.brand{
+    display: flex;
+    align-items: center;
+}
+.brand a{
+    font-size: 20px;
+    font-weight: bold;
+}
+a{
+    text-decoration: none;
+}
+li a:hover{
+    color: #dfd2cd;
+    text-decoration: none;
+}
+li a{
+    color:#FFFFFF
+}
+
+nav ul{
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+ul li{
+    padding: 30px;
+    margin-left: 10px;
+}
+.login .signup{
+    border-radius: 5px;
+}
+/* .login {
+    border: 1px solid #498afb;
+    
+}
+ .signup{
+    border: 1px solid #ff3860;
+} */
+.hamburger-menu{
+    display: none;
+    cursor: pointer;
+}
+.hamburger-menu div{
+    width: 35px;
+    height: 5px;
+    margin: 6px 0;
+    background-color: black;
+}
+
+.open .bar1{
+    -webkit-transform: rotate(-45deg) translate(-9px,6px);
+    transform: rotate(-45deg) translate(-9px,6px);
+}
+.open .bar2{
+    opacity: 0;
+}
+.open .bar3{
+    -webkit-transform: rotate(45deg) translate(-8px,-8px);
+    transform: rotate(45deg) translate(-8px,-8px);
+}
+.mobile-menu{
+    display: none;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 50px;
+}
+.open .mobile-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (max-width:900px) {
+    nav ul{
+        display: none;
+    }
+    .hamburger-menu{
+        display: block;
+    }
+}
+
+
+
+
+
+
+/* .navClass{
+    background-color: black;
+    color: white;
+}
+.heading{
+    font-size: 2rem;
+    padding: 10px;
+    margin-left: 10px;
+}
+.userLogo{
+    text-align: right;
+}
+.userName{
+    text-align: center;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 1rem;
+} */

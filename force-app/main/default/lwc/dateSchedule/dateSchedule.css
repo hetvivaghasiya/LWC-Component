@@ -1,0 +1,18 @@
+.data-button{
+    background-color: #33383b;
+    border-color: #33383b;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 17px;
+    margin-bottom: 20px;
+    letter-spacing: 0px;
+	float:right;
+    border-radius: 20px;
+ }
+ .data-button:hover{
+    background-color: white;
+    border-color: #33383b;
+    color: #33383b;
+    font-weight: bold;
+ }
+

@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Future Date Slots">
+        <div class="slds-m-around_medium">
+            <template for:each={dateSlots} for:item="slot">
+                <button 
+                    key={slot} 
+                    class="date-button slds-m-right_small"
+                    data-date={slot}
+                    onclick={handleClick}>{slot}
+                </button>
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,174 @@
+main {
+    padding: 30px 60px;
+}
+
+.card {
+    position: relative;
+    border-radius: 16px;
+    margin: 0 auto;
+    width: 500px;
+    max-width: 100%;
+    min-height: 357px;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+        0px 5px 8px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    background-size: cover;
+}
+
+img {
+    position: absolute;
+    margin: 0 auto;
+    width: 500px;
+    max-width: 100%;
+    min-height: 357px;
+    overflow: hidden;
+}
+
+.btnMoreInfo {
+    background-color: #33383b;
+    border-color: #33383b;
+    color: white;
+    padding: 13px 42px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 17px;
+    cursor: pointer;
+    letter-spacing: 0px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.btnMoreInfo:hover {
+    background-color: white;
+    border-color: #33383b;
+    color: #33383b;
+    font-weight: bold;
+}
+
+/* Centering the button */
+.info {
+    position: relative;
+    width: 100%;
+    height: 357px;
+    background-color: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    text-align: center;
+    transform: translateY(100%) translateY(-88px) translateZ(0);
+    transition: transform 0.5s ease-out;
+}
+.titleHeading {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+    color: #3C3D37;
+    margin: 20px 0;
+    padding: 12px;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+/* Hover effect */
+.card:hover .info {
+    transform: translateY(0) translateZ(0);
+}
+
+.title {
+	margin-top: 8px;
+    margin-bottom: 35px;
+    padding: 14px;
+    font-weight: 500;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+  
+  /* .description {
+	margin: 0;
+	padding: 0 24px 24px;
+	font-size: 18px;
+	line-height: 1.5;
+  } */
+  
+  /* General layout and typography stuff */
+  /* @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400"); */
+  
+  * {
+	box-sizing: border-box;
+	position: relative;
+	transition: all .3s ease
+  }
+  
+  html {
+	font-size: 16px
+  }
+  
+  body {
+	font-family: Open Sans, Verdana, sans-serif;
+	color: rgba(0, 0, 0, .87);
+	font-weight: 400;
+	line-height: 1.45
+  }
+  
+  body,
+  header {
+	background: #fafafa
+  }
+  
+  header {
+	padding: 40px;
+	min-height: 200px;
+	text-align: center;
+	color: rgba(0, 0, 0, .87)
+  }
+  
+  header > * {
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto
+  }
+  
+  header>:last-child {
+	margin-bottom: 0
+  }
+  
+  h1 {
+	margin-bottom: 0.5em;
+	font-weight: inherit;
+	line-height: 1.2;
+	color: #1c5b72;
+	font-size: 2.618em
+  }
+  
+  @media (min-width:800px) {
+	h1 {
+	  font-size: 4.236em;
+	  font-weight: 300
+	}
+  }
+  
+  p {
+	margin-bottom: 1.3em;
+	line-height: 1.618;
+  }
+  
+  @media (min-width:800px) {
+	p {
+	  font-size: 16px;
+	  text-align: center;
+	}
+  }
+  
+  a {
+	color: #e03616;
+	text-decoration: none
+  }
+  

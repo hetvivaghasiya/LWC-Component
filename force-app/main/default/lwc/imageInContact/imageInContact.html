@@ -1,0 +1,44 @@
+<template>
+    <div class="slds-grid slds-wrap slds-gutters slds-m-horizontal_xx-large ">
+        <template for:each={contacts} for:item="contact">
+        <div class="slds-col slds-size_1-of-3 slds-p-around_medium"  key={contact.Id}>
+            <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="3">
+            
+                <lightning-card>
+                <h1 slot="title" class="no-wrap">{contact.FirstName}    {contact.LastName}</h1>
+               
+               <lightning-button 
+               data-account-id={contact.Id} 
+               label="More Info" 
+               slot="actions"
+                class="bc" 
+                variant="destructive" 
+                onclick={navigateCourse}></lightning-button> 
+               <p class="slds-p-horizontal_small">{contact.Id}</p>
+               
+            </lightning-card>
+            
+        </lightning-layout-item>
+        </div>
+        </template>
+    </div>
+</template>
+
+
+
+
+
+
+
+
+
+<!-- <template>
+    <div style="height: 500px;">
+        <template if:true={contacts}>
+            <c-custom-data-table  key-field="id" data={contacts} columns={columns} 
+            hide-checkbox-column="true">
+
+            </c-custom-data-table>
+        </template>
+    </div>
+</template> -->

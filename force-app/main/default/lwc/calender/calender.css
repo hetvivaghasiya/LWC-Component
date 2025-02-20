@@ -1,0 +1,27 @@
+.slds-box {
+    padding: 10px;
+}
+
+.today-date {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.date-slots {
+    display: flex;
+    gap: 15px;
+}
+
+.date-slot {
+    background-color: #0070d2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.date-slot:hover {
+    background-color: #005bb5;
+}

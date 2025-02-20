@@ -1,0 +1,99 @@
+<template>
+    <div class="courses-container">
+        <h1 class="titleHeading">Course</h1>
+
+        <div class="slds-col slds-size_1-of-3 slds-p-around_medium">
+            <template for:each={courses} for:item="course">
+                <div class="course" key={course.Id}>
+                    <div class="course-preview">
+                        <div class="course-title">
+                            <h1>{course.Name}</h1>
+                            <h1>{course.Course_Year__c}</h1>
+                        </div>
+                        <h6>Course Code: {course.Course_Code__c}</h6>
+                        <h6>Credits: {course.Credits__c}</h6>
+                        <h6>Fees: {course.Course_Fees__c}</h6>
+                    </div>
+    
+                    <div class="course-info">
+                        <div class="progress-container">
+                            <div class="progress"></div>
+                        </div>
+                        <p class="paragraph">{course.Course_Description__c}</p>
+
+
+                        <lightning-card  title="Eligibility Criteria"  class="eligibility-card">
+                            <div>
+                                <p class="pec">{course.formattedEligibility}</p>
+                               
+                                <!-- <p>{course.Eligibility_Criteria__c}</p> -->
+                            </div>
+                        </lightning-card>   
+                                        <button 
+                                            class="btnMoreInfo" 
+                                            data-account-id={course.Id} 
+                                            onclick={openModal}>
+                                            Inquiry
+                                        </button>
+
+                            <!-- </lightning-layout-item> -->
+                        <!-- </lightning-layout> -->
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <!-- Modal Dialog -->
+   <template if:true={isModalOpen}>
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <!-- Modal/Close Button -->
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                    <lightning-icon icon-name="utility:close" size="small" alternative-text="close" class="slds-button__icon slds-button__icon_small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 class="slds-text-heading_medium">Course Inquiry</h2>
+            </header>
+
+            <!-- Modal Body -->
+            <div class="slds-modal__content slds-p-around_medium">
+                <lightning-record-edit-form 
+                    object-api-name="Student_Inquiry_Lead__c" 
+                    onsuccess={handleSuccess} 
+                    onerror={handleError}>
+
+                    <!-- Grid Layout for Form Fields -->
+                    <div class="slds-grid ">
+                        <!-- Left Column -->
+                        <div class="slds-col slds-size_6-of-12 slds-p-right_medium">
+                            <lightning-input-field field-name="First_Name__c"></lightning-input-field>
+                            <lightning-input-field field-name="Middle_Name__c"></lightning-input-field>
+                            <lightning-input-field field-name="Last_Name__c"></lightning-input-field>
+                            <lightning-input-field field-name="Email__c"></lightning-input-field>
+                            <lightning-input-field field-name="Phone__c"></lightning-input-field>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="slds-col slds-size_6-of-12 slds-p-left_medium">
+                            <lightning-input-field field-name="DOB__c"></lightning-input-field>
+                            <lightning-input-field field-name="Gender__c"></lightning-input-field>
+                            <lightning-input-field field-name="Stream__c"></lightning-input-field>
+                            <lightning-input-field field-name="Previous_Education__c"></lightning-input-field>
+                        </div>
+                    </div>
+
+                    <!-- Buttons Section -->
+                    <div class="slds-m-top_medium slds-text-align_center">
+                        <lightning-button class="space1" variant="neutral" label="Cancel" onclick={closeModal}></lightning-button>
+                        <lightning-button  variant="brand" label="Save" onclick={handleSuccess}></lightning-button>
+                    </div>
+                </lightning-record-edit-form>
+            </div>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+    
+</template>

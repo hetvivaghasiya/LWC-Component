@@ -1,0 +1,27 @@
+:host {
+    display: block;
+}
+
+.slds-card__header-title {
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.slds-m-around_medium {
+    max-width: 600px;
+    margin: auto;
+}
+
+lightning-input,
+lightning-combobox {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+lightning-button {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}

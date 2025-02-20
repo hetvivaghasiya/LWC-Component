@@ -1,0 +1,15 @@
+<template>
+    <!-- accountForm.html -->
+    <lightning-card title="Create Account">
+        <div class="slds-p-horizontal_medium">
+            <!-- Account Name Input -->
+            <lightning-input label="Account Name" value={accountName} onchange={handleInputChange} data-id="accountName"></lightning-input>
+            
+            <!-- Email Input -->
+            <lightning-input label="Email" value={emailAddress} onchange={handleEmailChange} data-id="emailAddress"></lightning-input>
+
+            <!-- Save Button -->
+            <lightning-button label="Save" onclick={handleSave}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

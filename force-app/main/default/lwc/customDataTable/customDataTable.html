@@ -1,0 +1,41 @@
+<template>
+    <h1 class="titleHeading">University</h1>
+
+    <div class="slds-grid slds-wrap slds-gutters slds-m-horizontal_xx-large ">
+
+        <template if:true={university}>
+            <template for:each={university} for:item="un">
+        <div class="slds-col slds-size_1-of-3 slds-p-around-medium space1" key={un.Id}>
+            <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="3">
+                <!-- <lightning-card title="Contact Records" icon-name="standard:contact"> -->
+                            <lightning-card class="slds-card">
+                                    <div class="slds-p-horizontal_medium">
+                                        <!-- Image of the contact -->
+                                        <img src={un.Image__c} alt="University Image" class="contact-image" />
+                                        <!-- Description of the contact -->
+                                         
+                                        <h1>
+                                            {un.Name} 
+                                        </h1>
+                                        <p>{un.University_City__c}</p>
+                                        <p class="description">{un.Description__c}</p>
+                                    <div style="text-align:center;">
+                                        <button
+                                        class="btnMoreInfo" 
+                                        data-uid={un.Id} 
+                                        onclick={navigateCollege}>More Info
+                                        </button> 
+                                        </div>
+                                </div>
+                                </lightning-card>
+            </lightning-layout-item>
+        </div>
+    
+    
+    
+     </template>
+    </template>
+    
+    
+    </div>
+</template>

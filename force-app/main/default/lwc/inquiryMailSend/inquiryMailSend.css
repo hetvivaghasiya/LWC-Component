@@ -1,0 +1,168 @@
+
+* {
+	box-sizing: border-box;
+    width: auto;
+}
+.paragraph {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #333; 
+}
+
+.eligibility {
+    font-weight: bold;
+    color: #007BFF; 
+    margin-top: 10px;
+}
+
+.eligibility-card {
+    margin-bottom: 20px !important; 
+}
+
+.pec{
+	margin-left: 13px;
+}
+
+.course-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.course-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+body {
+	background-image: linear-gradient(45deg, #7175da, #9790F2);
+	font-family: 'Muli', sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: 0;
+	text-align: justify;
+}
+
+.courses-container {
+	
+}
+
+
+.titleHeading {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+    color: #3C3D37;
+    margin: 20px 0;
+    padding: 12px;
+}
+
+.course {
+	color: #ffffff;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    max-width: 100%;
+    margin: 20px 0; 
+    overflow: hidden;
+    width: 100%; 
+}
+
+
+.course h6 {
+	opacity: 0.6;
+	margin: 0;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.course h2 {
+	letter-spacing: 1px;
+	margin: 10px 0;
+}
+
+.course-preview {
+	background-color: #5e5e4a;
+	color: #fff;
+	padding: 30px;
+	min-width: fit-content;
+}
+
+.course-preview a {
+	color: #fff;
+	display: inline-block;
+	font-size: 12px;
+	opacity: 0.6;
+	margin-top: 30px;
+	text-decoration: none;
+}
+
+.course-info {
+	background-color: #f5f5f5;
+	padding: 30px;
+	position: relative;
+	width: 100%;
+}
+
+.btn {
+	margin-left: 895px;
+	margin-top: 100px;
+	--slds-c-button-brand-color-background: #2fa588;
+}
+
+
+
+
+.btnMoreInfo{
+    background-color: #33383b;
+    border-color: #33383b;
+    color: white;
+    padding: 13px 42px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 17px;
+    margin-bottom: 20px;
+    letter-spacing: 0px;
+    border-radius: 20px;
+	margin-top: 13px;
+	margin-left: 90%;
+ }
+ .btnMoreInfo:hover{
+    background-color: white;
+    border-color: #33383b;
+    color: #33383b;
+    font-weight: bold;
+ }
+
+
+@media screen and (max-width: 480px) {
+
+	.social-panel-container.visible {
+		transform: translateX(0px);
+	}
+	
+	.floating-btn {
+		right: 10px;
+	}
+}
+
+
+.slds-grid{
+	padding-left: 60px !important;
+	width: 640px !important;
+}
+.slds-modal__content{
+	margin: 0 auto !important;
+	width: 640px !important;
+}
+
+.space1{
+	margin: 10px;
+}

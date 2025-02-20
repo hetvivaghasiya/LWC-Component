@@ -1,0 +1,18 @@
+<template>
+  <lightning-card title="Select a Date Slot">
+      <div class="container">
+          <p class="today-date">Today's Date: {formattedTodayDate}</p>
+          <div class="date-slots">
+              <button class="date-slot" onclick={selectDate} data-id="slot1">
+                  {formattedDateSlot1}
+              </button>
+              <button class="date-slot" onclick={selectDate} data-id="slot2">
+                  {formattedDateSlot2}
+              </button>
+              <button class="date-slot" onclick={selectDate} data-id="slot3">
+                  {formattedDateSlot3}
+              </button>
+          </div>
+      </div>
+  </lightning-card>
+</template>

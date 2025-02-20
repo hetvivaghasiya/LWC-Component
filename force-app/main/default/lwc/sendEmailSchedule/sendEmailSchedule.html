@@ -1,0 +1,6 @@
+<template>
+    <lightning-button label="Send Inquiry Email" onclick={handleSendEmail} class="slds-m-around_medium"></lightning-button>
+    <template if:true={showMessage}>
+        <div class={messageClass}>{message}</div>
+    </template>
+</template>

@@ -1,0 +1,127 @@
+/* Style for the lightning-card container */
+lightning-card {
+    margin: 0;
+    padding: 0;
+    border: none; /* Ensure no borders are causing extra space */
+}
+
+
+.space1 {
+    padding: 20px;
+}
+
+/* Styling the card content */
+.slds-p-horizontal_medium {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+ .btnMoreInfo{
+    background-color: #33383b;
+    border-color: #33383b;
+    color: white;
+    padding: 13px 42px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 17px;
+    margin-bottom: 20px;
+    letter-spacing: 0px;
+    border-radius: 20px;
+ }
+ .btnMoreInfo:hover{
+    background-color: white;
+    border-color: #33383b;
+    color: #33383b;
+    font-weight: bold;
+ }
+
+.titleHeading {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+    color: #3C3D37;
+    margin: 20px 0;
+    padding: 12px;
+}
+
+.slds-card { 
+    --slds-c-card-radius-border:25px;
+   --slds-c-card-color-background:#F5F5F5;
+}
+
+/* Heading for the contact name */
+h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #3C3D37;
+}
+
+.description {
+    text-align: justify;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+/* Responsive Image Styling */
+.contact-image {
+    width: 90%;
+    height: auto;
+    max-height: 265px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0 auto 1rem;
+    display: block;
+}
+
+/* Fallback for when no contact image is available */
+.contact-image[alt="Contact Image"]:not([src]) {
+    background-color: #e1e1e1;
+    border-radius: 8px;
+    width: 70%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #777;
+    font-size: 1rem;
+    margin: 0 auto;
+}
+
+/* Styling the description */
+p {
+    font-size: 1rem;
+    color: #3C3D37;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Error message style */
+.slds-text-color_error {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .contact-image {
+        width: 80%;
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-image {
+        width: 90%;
+        max-height: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-image {
+        width: 100%;
+        max-height: 250px;
+    }
+}

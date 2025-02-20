@@ -1,0 +1,30 @@
+<template>
+
+         <div class="carousel-container responsive-img masthead">
+            <div class="carousel" >
+
+           
+                <template for:each={images} for:item="image">
+                    <div class="carousel-slide carousel-img " key={image.id} >
+
+                        <div class={carouselClass}>
+                            <img src={image.src} alt={image.alt} />
+                            <!-- <div class="carousel-text">{image.text}</div> -->
+
+                            <div class="carousel-text">
+                                <p class="main-text">{image.text}</p>
+                                <p class="secondary-text">{image.secondaryText}</p> <!-- New secondary text -->
+                            </div>
+
+                        </div>
+                    
+                    
+                    </div>
+                </template>
+                
+            </div>
+            <button class="prev" onclick={prevSlide}>❮</button>
+            <button class="next" onclick={nextSlide}>❯</button>
+        </div> 
+        
+</template>
