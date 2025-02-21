@@ -1,0 +1,45 @@
+<template>
+  <div class="container">
+      <h2>Student Marksheet Upload</h2>
+      
+      <table class="marksheet-table">
+          <thead>
+              <tr>
+                  <th>Marksheet Type</th>
+                  <th>Upload</th>
+                  <th>Status</th>
+              </tr>
+          </thead>
+          <tbody>
+              <!-- 10th Marksheet -->
+              <tr>
+                  <td>10th Marksheet</td>
+                  <td>
+                      <input type="file" accept="image/*" data-marksheet-type="tenth" onchange={handleFileChange} />
+                      <button data-marksheet-type="tenth" onclick={uploadFile}>Upload</button>
+                  </td>
+                  <td>
+                    <span class={tenthMarksheetClass}>{tenthMarksheetStatus}</span>
+                  </td>
+              </tr>
+
+              <!-- 12th Marksheet -->
+              <tr>
+                  <td>12th Marksheet</td>
+                  <td>
+                      <input type="file" accept="image/*" data-marksheet-type="twelfth" onchange={handleFileChange} />
+                      <button data-marksheet-type="twelfth" onclick={uploadFile}>Upload</button>
+                  </td>
+                  <td>
+                    <span class={twelfthMarksheetClass}>{twelfthMarksheetStatus}</span>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+
+      <!-- Success Message -->
+      <template if:true={successMessage}>
+          <p class="success-message">{successMessage}</p>
+      </template>
+  </div>
+</template>

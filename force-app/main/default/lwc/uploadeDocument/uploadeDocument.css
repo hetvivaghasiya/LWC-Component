@@ -1,0 +1,57 @@
+.container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.marksheet-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.marksheet-table th,
+.marksheet-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.marksheet-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.status-uploaded {
+    color: green;
+    font-weight: bold;
+}
+
+.status-not-uploaded {
+    color: gray;
+    font-weight: bold;
+}
+
+.success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 15px;
+}
