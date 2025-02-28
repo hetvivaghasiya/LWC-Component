@@ -136,9 +136,25 @@ public without sharing class cardCourse {
         }
     }
 
+    
+    @AuraEnabled(cacheable=true)
+    public static List<College__c> getCollegeList(String cid) {
+        try {
+            List<College__c> clg = [
+                SELECT Id, Name 
+                FROM College__c
+                WHERE Id = :cid
+            ];
+            return clg;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
     @AuraEnabled
     public static String submitInquiry(
         Id courseId, 
+        Id collegeId,
         String firstName, 
         String middleName, 
         String lastName,  
@@ -152,7 +168,13 @@ public without sharing class cardCourse {
         try {
             // Debug Course ID before using it in the query
             System.debug('Received Course ID: ' + courseId);
+            System.debug('Received College ID: ' + collegeId);
     
+            // Fetch College Name from Course ID
+        // Course__c course = [SELECT Id, Name, College__c, College__r.Name FROM Course__c WHERE Id = :courseId LIMIT 1];
+        // String collegeName = course.College__r.Name;
+
+        
             // Create a new Lead for student inquiry
             Student_Inquiry_Lead__c lead = new Student_Inquiry_Lead__c(
                 First_Name__c = firstName,
@@ -164,7 +186,9 @@ public without sharing class cardCourse {
                 Gender__c = gender,
                 Stream__c = stream,
                 Previous_Education__c = prevEdu,
-                Course__c = courseId
+                Course__c = courseId,
+                College__c = collegeId,
+                Lead_Status__c='Inquiry'
             );
             insert lead;
     

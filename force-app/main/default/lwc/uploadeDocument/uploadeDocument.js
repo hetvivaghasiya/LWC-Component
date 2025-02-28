@@ -3,7 +3,7 @@ import getStudentProfile from '@salesforce/apex/profileStudentClass.studentProfi
 import uploadStudentImage from '@salesforce/apex/profileStudentClass.uploadStudentImage';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
-export default class UploadMarksheet extends LightningElement {
+export default class UploadeDocument extends LightningElement {
     @track studentData = {};
     @track errorMessage = '';
     @track successMessage = '';

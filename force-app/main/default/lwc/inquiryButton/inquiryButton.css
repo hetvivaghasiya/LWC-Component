@@ -1,0 +1,55 @@
+.slds-modal__container {
+  /* max-width: 450px; */
+    border-radius: 8px;
+    text-align: center;
+}
+.confirm-btn{
+    background: rgb(175, 26, 26);
+    color: #ffffff;
+    border: solid;
+    border-width: 1px;
+    padding: 9px 15px;
+    margin-left: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out
+}
+.confirm-btn:hover{
+    background: #ffffff;
+    color:#333;
+    border: solid;
+    border-width: 1px;
+    padding: 9px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out
+}
+.cln-btn{
+    background: #ffffff;
+    color:#333;
+    border: solid;
+    border-width: 1px;
+    padding: 9px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out
+}
+
+.slds-modal__header {
+    background-color: #3b3b31;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+}
+
+.slds-modal__footer {
+    text-align: center;
+    padding: 15px;
+}
+.slds-text-heading_medium {
+    color:white;
+    font-weight: bold;
+    font-size: 20px;
+}

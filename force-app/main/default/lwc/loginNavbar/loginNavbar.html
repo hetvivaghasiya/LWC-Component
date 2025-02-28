@@ -22,7 +22,19 @@
                 <li><a href="/profile">Profile</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact-page">Contact</a></li>
-                <li class="logout"><a href="#" onclick={handleLogout}>Logout</a></li>
+                <!-- <li class="logout"><a href="#" onclick={openModel}>Logout</a></li> -->
+                <li class="logout">
+                    <a href="#" onclick={openModel}>
+                        <lightning-icon icon-name="utility:logout" size="small" alternative-text="Logout" class="logout-icon"></lightning-icon>
+                    </a>
+                </li>
+                
+                
+
+                <c-inquiry-button message="Are you sure you want to proceed?" onconfirm={handleLogout}
+                oncancel={handleCancel}></c-inquiry-button>
+                <!-- <c-confirmation-popup message="Do you really want to delete this item?" onconfirm={handleDelete}
+        oncancel={handleCancel}></c-confirmation-popup> -->
             </ul>
         </nav>
         </header>

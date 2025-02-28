@@ -1,0 +1,39 @@
+<template>
+    <lightning-card title="Semesters" icon-name="utility:education">
+        <template if:true={semesters.length}>
+            <div class="custom-table-container">
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_fixed-layout">
+                    <thead>
+                        <tr class="slds-text-title_caps">
+                            <th scope="col" class="slds-text-align_left">Semester</th>
+                            <th scope="col" class="slds-text-align_left">Start Date</th>
+                            <th scope="col" class="slds-text-align_left">End Date</th>
+                            <th scope="col" class="slds-text-align_center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={semesters} for:item="semester">
+                            <tr key={semester.Id}>
+                                <td class="slds-cell-wrap">{semester.Name}</td>
+                                <td class="slds-cell-wrap">{semester.Start_Date__c}</td>
+                                <td class="slds-cell-wrap">{semester.End_Date__c}</td>
+                                <td class="slds-text-align_center">
+                                    <button 
+                                        class="pay-button" 
+                                        data-id={semester.Id} 
+                                        onclick={handlePayClick}>
+                                        Pay
+                                    </button>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+
+        <template if:true={errorMessage}>
+            <p class="slds-text-color_error slds-p-around_medium">{errorMessage}</p>
+        </template>
+    </lightning-card>
+</template>

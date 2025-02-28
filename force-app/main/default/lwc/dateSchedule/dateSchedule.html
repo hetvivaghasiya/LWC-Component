@@ -1,14 +1,40 @@
 <template>
-    <lightning-card title="Future Date Slots">
-        <div class="slds-m-around_medium">
-            <template for:each={dateSlots} for:item="slot">
-                <button 
-                    key={slot} 
-                    class="date-button slds-m-right_small"
-                    data-date={slot}
-                    onclick={handleClick}>{slot}
-                </button>
-            </template>
-        </div>
+    <lightning-card>
+        <lightning-card>
+             <!-- Instructions -->
+             <p class="instruction-text">
+                Please follow these interview guidelines carefully. After reviewing the instructions, 
+                select a suitable date for your interview from the available slots below.
+            </p>
+            <div class="slds-grid slds-wrap slds-p-around_medium">
+                <template for:each={interviewTips} for:item="tip">
+                    <div key={tip.id} class="slds-col slds-size_1-of-2 slds-p-around_small">
+                        <div class="instruction-card">
+                            <h3 class="card-title">{tip.title}</h3>
+                            <p class="card-content">{tip.content}</p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </lightning-card>
+            <!-- Date Slots -->
+            <div class="date-slot-container">
+                <p class="date-title">📅 Available Exam Dates</p>
+                <div class="date-buttons">
+                    <template for:each={dateSlots} for:item="slot">
+                        <button 
+                            key={slot} 
+                            class="date-button"
+                            data-date={slot}
+                            onclick={handleClick}>{slot}
+                        </button>
+                    </template>
+                </div>
+            </div>
+
+             <!-- ✅ Display success message -->
+        <template if:true={successMessage}>
+            <p class="success-message">{successMessage}</p>
+        </template>
     </lightning-card>
 </template>

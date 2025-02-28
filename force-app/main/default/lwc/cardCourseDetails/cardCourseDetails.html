@@ -32,6 +32,7 @@
 
     <div class="courses-container">
         <div class=" courses-container slds-col slds-size_1-of-3 slds-p-around_medium">
+            <h1 class="titleHeading">Course</h1>
             <template for:each={courses} for:item="course">
                 <div class="course" key={course.Id}>
                     <div class="course-preview">
@@ -53,7 +54,7 @@
 
                         <lightning-card title="Eligibility Criteria">
                             <div>
-                                <p>{course.Eligibility_Criteria__c}</p>
+                                <p style="margin-left: 13px;">{course.formattedEligibility}</p>
                             </div>
                         </lightning-card>   
     
@@ -101,24 +102,35 @@
                         <!-- Left Column -->
                         <div class="slds-col slds-size_6-of-12 slds-p-right_medium">
                             <lightning-input-field field-name="First_Name__c"  name="firstName" value={firstName} onchange={handleChange} data-id="firstName" required></lightning-input-field>
-                            <lightning-input-field field-name="Middle_Name__c"  name="middleName" value={middleName} onchange={handleChange} data-id="middleName" ></lightning-input-field>
-                            <lightning-input-field field-name="Last_Name__c"  name="lastName" value={lastName} onchange={handleChange} data-id="lastName"></lightning-input-field>
-                            <lightning-input-field field-name="Email__c"  name="emailAddress" value={emailAddress} onchange={handleChange} data-id="emailAddress"></lightning-input-field>
-                            <lightning-input-field   lightning-input-field field-name="Phone__c"  name="phno" value={phno} onchange={handleChange} data-id="phno" ></lightning-input-field>
+                            <lightning-input-field field-name="Middle_Name__c"  name="middleName" value={middleName} onchange={handleChange} data-id="middleName" required ></lightning-input-field>
+                            <lightning-input-field field-name="Last_Name__c"  name="lastName" value={lastName} onchange={handleChange} data-id="lastName" required></lightning-input-field>
+                            <lightning-input-field field-name="Email__c"  name="emailAddress" value={emailAddress} onchange={handleChange} data-id="emailAddress" required></lightning-input-field>
+                            <lightning-input-field  field-name="Phone__c"  name="phno" value={phno} onchange={handleChange} data-id="phno" required ></lightning-input-field>
                         </div>
 
                         <!-- Right Column -->
                         <div class="slds-col slds-size_6-of-12 slds-p-left_medium">
-                            <lightning-input-field field-name="DOB__c"  name="dob" value={dob} onchange={handleChange} data-id="dob"></lightning-input-field>
-                            <lightning-input-field field-name="Gender__c"  name="gender" value={gender} onchange={handleChange} data-id="gender"></lightning-input-field>
-                            <lightning-input-field field-name="Previous_Education__c"  name="prevEdu" value={prevEdu} onchange={handleChange} data-id="prevEdu"></lightning-input-field>
+                            <lightning-input-field field-name="DOB__c"  name="dob" value={dob} onchange={handleChange} data-id="dob" required></lightning-input-field>
+                            <lightning-input-field field-name="Gender__c"  name="gender" value={gender} onchange={handleChange} data-id="gender" required></lightning-input-field>
+                            <!-- <lightning-input-field field-name="Previous_Education__c"  name="prevEdu" value={prevEdu} onchange={handleChange} data-id="prevEdu"></lightning-input-field> -->
                             <!-- ||||||||||||||||||code Modify -->
-                            <template if:true={isConditionMet}>
+                            <!-- <template if:true={isConditionMet}>
                             <lightning-input-field field-name="Stream__c"  name="stream" value={stream} onchange={handleChange} data-id="stream"></lightning-input-field>
-                            </template>
+                            </template> -->
                             <!-- <lightning-input-field field-name="Course__c" value={id} data-id="id"></lightning-input-field> -->
 
-                           
+
+                            
+                            <lightning-combobox
+                            name="clgId"
+                            label="College"
+                            value={clgId}
+                            placeholder="Select College"
+                            options={clglist}
+                            onchange={handleClgChange}
+                            disabled
+                            ></lightning-combobox>
+                
                             <lightning-combobox
                             name="courseOpId"
                             label="Courses"
@@ -126,6 +138,7 @@
                             placeholder="Select Course"
                             options={clist}
                             onchange={handleCourseChange}
+                            disabled
                             ></lightning-combobox>
                             
                         </div>

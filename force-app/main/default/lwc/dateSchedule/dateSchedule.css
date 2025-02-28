@@ -1,18 +1,157 @@
-.data-button{
-    background-color: #33383b;
-    border-color: #33383b;
-    color: white;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 17px;
-    margin-bottom: 20px;
-    letter-spacing: 0px;
-	float:right;
-    border-radius: 20px;
- }
- .data-button:hover{
-    background-color: white;
-    border-color: #33383b;
-    color: #33383b;
+/* Center the text inside the card */
+.slds-m-around_medium {
+    text-align: center;
+}
+/* Center the entire card on the page */
+.centered-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Centering the titles */
+.slds-card__header {
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+/* Making the text larger and bold */
+.slds-card__header-title {
+    font-size: 22px !important;
     font-weight: bold;
- }
+}
+
+
+/* Styling for instruction text */
+.instruction-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Button Styling */
+.date-button {
+    background-color: #5e5e4a;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: solid;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Hover and Active Effects */
+.date-button:hover {
+    background-color: #ffffff;
+    border-color: #333;
+    color: #333 ;
+    border-width: 1px;
+}
+
+.date-button:active {
+    background-color: #5e5e4a;
+    transform: scale(0.98);
+}
+
+/* Interview Instructions Cards */
+.instruction-card {
+    background: #fffdfd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    min-height: 120px;
+    border: solid #ccc;
+}
+
+/* Card Title */
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Card Content */
+.card-content {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Date Slot Section */
+.date-slot-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Date Slot Title */
+.date-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+
+/* Disable button styling */
+.disabled-button {
+    background-color: #d3d3d3 !important;
+    color: #666 !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Highlight the selected date */
+.selected-date {
+    background-color: #4CAF50 !important;
+    color: white !important;
+    font-weight: bold;
+    border: 2px solid #2E7D32;
+}
+
+/* Success message */
+.success-message {
+    color: #2E7D32;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+}
+
+
+/* Date Buttons Container */
+/* .date-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Date Buttons Styling */
+/* .date-button {
+    background-color: #0070d2;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+} */
+
+/* Hover and Active Effects */
+/* .date-button:hover {
+    background-color: #005fb2;
+    transform: scale(1.05);
+} */
+/* 
+.date-button:active {
+    background-color: #004a91;
+    transform: scale(0.98);
+} */ 
 

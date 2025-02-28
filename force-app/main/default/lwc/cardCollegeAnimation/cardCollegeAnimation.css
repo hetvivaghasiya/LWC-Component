@@ -40,7 +40,7 @@ img {
 
 .btnMoreInfo:hover {
     background-color: white;
-    border-color: #33383b;
+    border-color:solid 1px #33383b;
     color: #33383b;
     font-weight: bold;
 }

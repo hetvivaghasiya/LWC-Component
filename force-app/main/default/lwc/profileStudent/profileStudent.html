@@ -1,40 +1,40 @@
+<!-- <template>
+  <template if:true={studentData}>
+      <h2>{studentData.Name__c}'s Profile</h2>
+      <br />
+
+      File Upload
+      <input type="file" accept="image/*" onchange={handleFileChange} />
+      <button onclick={uploadFile}>Upload Image</button>
+
+      <p style="color: green;">{successMessage}</p>
+  </template>
+
+  <template if:true={errorMessage}>
+      <p style="color: red;">{errorMessage}</p>
+  </template>
+</template> -->
+
+
+
 <template>
-    <div class="card-container">
-        <div class="card"> 
-          <!-- <div class="profile-img">
-            <img src={profileImageUrl} alt="Avatar" style="width:100%">
-        </div> -->
+  <template if:true={studentData}>
+      <h2>{studentData.Name__c}'s Profile</h2>
 
-        <!-- Display the Uploaded Image -->
-        <template if:true={imageUrl}>
-            <img src={imageUrl} alt="Last Uploaded Image" style="max-width: 100%; height: auto;" />
-        </template>
-        <template if:false={imageUrl}>
-            <p>No image available.</p>
-        </template>
-          <template if:true={studentData}>
-                <h1>{studentData.Name__c}</h1>
-                <!-- <p>Frontend Developer</p>
-                <ul>
-                    <li><span>Email:</span> username@example.com</li>
-                    <li><span>Phone:</span> (91+) 123-123-1234</li>
-                    <li><span>Location:</span> India</li>
-                </ul> -->
-               <!-- Upload Button -->
-               <input type="file" accept="image/*" onchange={handleFileChange} />
-               <button onclick={uploadFile}>Upload Image</button>
+      <!-- <template if:true={fileName}> -->
+          <!-- <img src={fileName} alt="Student Profile Image" style="width: 150px; height: 150px; border-radius: 50%;" /> -->
+      <!-- </template> -->
 
-                  <!-- Success Message -->
-                <template if:true={successMessage}>
-                  <p class="success-message">{successMessage}</p>
-              </template>
+      <br />
+      <input type="file" accept="image/*" onchange={handleFileChange} />
+      <button onclick={uploadFile}>Upload Image</button>
 
-               <!-- Display Uploaded Image -->
-               <template if:true={imageUrl}>
-                <img src={imageUrl} alt="Student Image" class="student-image" />
-            </template>
-            
-          </template>
-          </div>
-      </div>
-    </template>
+      <p style="color: green;">{successMessage}</p>
+  </template>
+  <img src={studentImageUrl} alt="Student Profile Image" style="width: 150px; height: 150px; border-radius: 50%;" />
+
+  <template if:true={errorMessage}>
+      <p style="color: red;">{errorMessage}</p>
+  </template>
+</template>
+

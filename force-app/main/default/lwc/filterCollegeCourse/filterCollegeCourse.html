@@ -1,0 +1,44 @@
+<template>
+    <lightning-card title="College Data">
+        <!-- Combobox Section -->
+        <div class="combobox-container">
+            <!-- Sort By Dropdown -->
+            <lightning-combobox
+                label="Sort By"
+                value={sortBy}
+                options={sortOptions}
+                onchange={handleSortByChange}>
+            </lightning-combobox>
+
+            <!-- Sort Order Dropdown -->
+            <lightning-combobox
+                label="Sort Order"
+                value={sortOrder}
+                options={sortOrderOptions}
+                onchange={handleSortOrderChange}>
+            </lightning-combobox>
+        </div>
+
+        <!-- DataTable Section -->
+        <div class="datatable-container">
+            <template if:true={colleges}>
+                <lightning-datatable
+                    key-field="id"
+                    data={colleges}
+                    columns={columns}
+                    hide-checkbox-column="true">
+                </lightning-datatable>
+            </template>
+        </div>
+
+        <!-- Loading Spinner -->
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </template>
+
+        <!-- Error Message -->
+        <template if:true={hasError}>
+            <div class="slds-text-color_error">Error loading data.</div>
+        </template>
+    </lightning-card>
+</template>

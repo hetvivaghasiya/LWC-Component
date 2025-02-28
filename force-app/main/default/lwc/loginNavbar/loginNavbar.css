@@ -46,3 +46,7 @@ ul li{
 .login .logout{
   border-radius: 5px;
 }
+.logout-icon {
+  --slds-c-icon-color-foreground-default: white; /* Change icon color to red */
+}
+

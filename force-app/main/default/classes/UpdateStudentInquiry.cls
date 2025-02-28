@@ -22,50 +22,54 @@ public without sharing class UpdateStudentInquiry {
             System.debug('Field Values: ' + JSON.serializePretty(fieldValues));
             System.debug('Map Size: ' + fieldValues.size());
             System.debug('Map Keys: ' + fieldValues.keySet());
-
-            // Fetch the lead record
-            Student_Inquiry_Lead__c lead = [SELECT Id, First_Name__c, Last_Name__c
+    
+            // Fetch the lead record with Course__c field
+            Student_Inquiry_Lead__c lead = [SELECT Id, First_Name__c, Last_Name__c, Email__c, Course__c,College__c
                                             FROM Student_Inquiry_Lead__c
                                             WHERE Id = :leadId
                                             LIMIT 1];
-
+    
             if (lead == null) {
                 throw new CustomException('The requested Lead does not exist.');
             }
-
+    
             // Update the lead record with new field values
             for (String field : fieldValues.keySet()) {
                 lead.put(field, fieldValues.get(field));
             }
+            
+            lead.Lead_Status__c='Contacted';
             update lead;
             System.debug('Lead after update: ' + lead);
-
-                // Check if related Registration_Student__c exists
+    
+            // Check if related Registered_Student__c exists
             List<Registered_Student__c> existingStudents = [
                 SELECT Id FROM Registered_Student__c
                 WHERE Student_Inquiry_Lead__c = :leadId
                 LIMIT 1
             ];
-
-            System.debug('==========existingStudents==========='+existingStudents);
-
+    
+            System.debug('==========existingStudents===========' + existingStudents);
+    
             Id registrationStudentId;
             if (existingStudents.isEmpty()) {
-                // Create a new Registration Student
+                // Create a new Registered Student with Course__c from Student Inquiry
                 Registered_Student__c student = new Registered_Student__c();
                 student.First_Name__c = lead.First_Name__c;
                 student.Last_Name__c = lead.Last_Name__c;
                 student.Email__c = lead.Email__c;
                 student.Student_Inquiry_Lead__c = lead.Id;
-
+                student.Select_Course__c= lead.Course__c; // Assigning course value from inquiry
+                student.College__c= lead.College__c; // Assigning course value from inquiry
+    
                 insert student;
                 registrationStudentId = student.Id;
-            System.debug('==========registrationStudentId==========='+registrationStudentId);
-
+                System.debug('==========registrationStudentId===========' + registrationStudentId);
             } else {
                 registrationStudentId = existingStudents[0].Id;
             }
-           System.debug('Student Inquiry Lead and Registration Student updated successfully!');
+    
+            System.debug('Student Inquiry Lead and Registered Student updated successfully!');
             return registrationStudentId;
         } catch (QueryException e) {
             return 'Error: Lead not found.';
@@ -75,12 +79,10 @@ public without sharing class UpdateStudentInquiry {
             return 'Error: ' + e.getMessage();
         }
     }
-
     
-
     // Custom Exception to handle specific cases
-    public class CustomException extends Exception {
-    }
+    public class CustomException extends Exception {}
+    
 
 
 

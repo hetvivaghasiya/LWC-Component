@@ -1,0 +1,145 @@
+/* Add spacing around the card */
+.slds-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+/* Center align the dropdowns */
+.slds-p-around_medium {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Style the comboboxes */
+lightning-combobox {
+    width: 45%;
+    min-width: 200px;
+}
+
+/* Add padding and spacing to the datatable */
+lightning-datatable {
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+/* Loading spinner centering */
+lightning-spinner {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Error message styling */
+.slds-text-color_error {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border-radius: 5px;
+}
+
+/* ==========================
+   COMBOBOX STYLING
+   ========================== */
+   .combobox-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 15px;
+    background: #f4f6f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure comboboxes are properly spaced and aligned */
+lightning-combobox {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+}
+
+/* Style combobox labels */
+lightning-combobox label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+}
+
+/* ==========================
+   DATATABLE STYLING
+   ========================== */
+/* ==========================
+   DATATABLE STYLING
+   ========================== */
+   .datatable-container {
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+/* Datatable header customization */
+lightning-datatable thead {
+    background: #005fb2; /* Dark blue header */
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Header cell styling */
+lightning-datatable thead th {
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+}
+
+/* Row styling */
+lightning-datatable tbody tr {
+    background: #f8f9fa;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Row hover effect */
+lightning-datatable tbody tr:hover {
+    background: #e9ecef; /* Light grey */
+}
+
+/* Zebra striping for better readability */
+lightning-datatable tbody tr:nth-child(even) {
+    background: #eef2f7;
+}
+
+/* Cell padding & alignment */
+lightning-datatable tbody td {
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Error message styling */
+.slds-text-color_error {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    padding: 12px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+/* Loading spinner alignment */
+lightning-spinner {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

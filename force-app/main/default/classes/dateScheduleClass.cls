@@ -35,15 +35,30 @@ public without sharing class dateScheduleClass {
             System.debug('Scheduled Date updated successfully for student: ' + student.Id);
 
             // Prepare Email Body
-            String emailBody = 'Dear ' + student.First_Name__c + ',\n\n';
-            emailBody += 'Your appointment has been scheduled for: ' + selectedDate + '.\n\n';
-            emailBody += 'Thank you.';
+            // Prepare Email Body with HTML Formatting
+            String emailBody = '<html><body>';
+            emailBody += '<p>Dear <strong>' + student.First_Name__c + '</strong>,</p>';
+            emailBody += '<p>We are pleased to inform you that your Exam appointment has been scheduled.</p>';
+            emailBody += '<p><strong>📅 Exam Date:</strong> <span style="color: #2E7D32; font-weight: bold;">' + selectedDate + '</span></p>';
+            emailBody += '<hr style="border: 1px solid #ccc;">';
+            emailBody += '<h3 style="color: #1976D2;">Important Instructions:</h3>';
+            emailBody += '<ul>';
+            emailBody += '<li>✅ Keep a copy of required documents ready.</li>';
+            emailBody += '<li>✅ Dress professionally and choose a quiet place for the Exam.</li>';
+            emailBody += '<li>✅ Prepare by reviewing common Exam questions and researching the company.</li>';
+            emailBody += '</ul>';
+            emailBody += '<p>If you have any questions or need to reschedule, please contact us at <a href="mailto:support@example.com">support@example.com</a>.</p>';
+            emailBody += '<h3 style="color: #D32F2F;">🚀 Best Wishes!</h3>';
+            emailBody += '<p>We wish you all the best for your Exam. Stay confident, and give it your best shot!</p>';
+            emailBody += '<p>Best Regards,<br><strong>HR Team</strong><br>Company Name</p>';
+            emailBody += '</body></html>';
+
 
             // Create and send email
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
             mail.setToAddresses(new String[] { student.Email__c });
             mail.setSubject('Confirmation of Your Scheduled Date');
-            mail.setPlainTextBody(emailBody);
+            mail.setHtmlBody(emailBody);
 
             Messaging.SendEmailResult[] results = Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
             

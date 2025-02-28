@@ -168,6 +168,7 @@ import { track, wire, api, LightningElement } from 'lwc';
 import getCourse from '@salesforce/apex/cardCourse.getCourse';
 import submitInquiry from '@salesforce/apex/cardCourse.submitInquiry';
 import getCourseList from '@salesforce/apex/cardCourse.getCourseList';
+import getCollegeList from '@salesforce/apex/cardCourse.getCollegeList';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { CurrentPageReference } from 'lightning/navigation';
 
@@ -182,7 +183,9 @@ export default class CardCourseDetails extends LightningElement {
     dob = '';
     emailAddress = '';
     courseOpId='';
-
+    clgId='';
+    
+    @track clglist=[];
     @track cList=[];
     @track courses = [];
     @track error;
@@ -224,6 +227,32 @@ export default class CardCourseDetails extends LightningElement {
         }
     }
 
+    @wire(getCollegeList, { cid: '$cid' })
+    wiredClgList({ error, data }) {
+        if (data) {
+            this.clglist = data.map(clg => ({
+                label: clg.Name,
+                value: clg.Id
+            }));
+            
+            // Pre-select the college based on `cid` from the URL
+            const selectedCollege = this.clglist.find(clg => clg.value === this.cid);
+            if (selectedCollege) {
+                this.clgId = selectedCollege.value;
+            }
+            
+            this.error = undefined;
+        } else {
+            this.error = error;
+            this.clglist = [];
+        }
+    }
+
+    handleClgChange(event) {
+        this.clgId = event.detail.value;
+    }
+
+
     // replacing semicolons with spaces
     formatPicklistValues(value) {
         return value ? value.replace(/;/g, ' | ') : 'No Eligibility Criteria Available';
@@ -239,9 +268,12 @@ export default class CardCourseDetails extends LightningElement {
 
     isModalOpen = false;
 
-    openModal() {
+    openModal(event) {
         this.isModalOpen = true;
+        this.courseOpId = event.target.dataset.accountId; // Store course Id
+        
     }
+    
 
     closeModal() {
         this.isModalOpen = false;
@@ -258,6 +290,11 @@ export default class CardCourseDetails extends LightningElement {
         // Update the courseId with the selected value
         this.courseOpId = event.detail.value; // This binds the selected course ID to the courseId variable
     }
+
+    // handleClgChange(event) {
+    //     // Update the courseId with the selected value
+    //     this.clgId = event.detail.value; // This binds the selected course ID to the courseId variable
+    // }
     
 
     //||||||||||||||||code modify 
@@ -289,6 +326,7 @@ export default class CardCourseDetails extends LightningElement {
             dob: this.dob,
             emailAddress: this.emailAddress,
             courseOpId: this.courseOpId
+            
         });
 
        
@@ -296,6 +334,7 @@ export default class CardCourseDetails extends LightningElement {
         
         submitInquiry({ 
             courseId:this.courseOpId,
+            collegeId: this.clgId,
             firstName: this.firstName, 
             middleName: this.middleName, 
             lastName: this.lastName, 

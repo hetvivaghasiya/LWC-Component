@@ -1,0 +1,41 @@
+<template>
+    <div class="custom-card">
+        <template if:true={studentData}>
+            <h1>Hello, {studentData.Name__c}</h1>
+        </template>
+        <div class="container">
+
+            <!-- Left Side: Profile Image & Upload Button -->
+            <div class="profile-card">
+                <template if:true={imageUrl}>
+                    <img src={imageSrc} alt="Uploaded Image" class="uploaded-image" />
+                </template>
+
+                <template if:false={imageUrl}>
+                    <p class="no-image-text">No image found.</p>
+                </template>
+
+                <lightning-file-upload
+                    label="Upload Profile Image"
+                    name="fileUploader"
+                    accept={acceptedFormats}
+                    onuploadfinished={handleUploadFinished} 
+                    record-id={studentId}>
+                </lightning-file-upload>
+            </div>
+
+            <!-- Right Side: Student Information (In a Separate Card) -->
+            <template if:true={studentData}>
+                <div class="student-card">
+                    <h2>Student Information</h2>
+                    <p><strong>Name:</strong> {studentData.Name__c} {studentData.Middle_Name__c} {studentData.Last_Name__c}</p>
+                    <p><strong>Email:</strong> {studentData.Email__c}</p>
+                    <p><strong>Status:</strong> {studentData.Status__c}</p>
+                    <p><strong>Gender:</strong> {studentData.Gender__c}</p>
+                    <p><strong>Phone Number:</strong> {studentData.Phone_Number__c}</p>
+                </div>
+            </template>
+
+        </div>
+    </div>
+</template>

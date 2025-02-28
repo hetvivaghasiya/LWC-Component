@@ -1,8 +1,6 @@
 import { LightningElement, api, track, wire } from 'lwc';
 import updateStudentInquiryLead from '@salesforce/apex/UpdateStudentInquiry.updateStudentInquiryLead';
 import getStudentInquiryLead from '@salesforce/apex/UpdateStudentInquiry.getInquiryData';
-// import sendEmail from '@salesforce/apex/UpdateStudentInquiry.sendEmail';
-// import updateRegistrationStudent from '@salesforce/apex/UpdateStudentInquiry.updateRegistrationStudent';
 import { NavigationMixin } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { CurrentPageReference } from 'lightning/navigation';
@@ -120,6 +118,7 @@ export default class UpdateInquiry extends NavigationMixin(LightningElement) {
             X12th_Percentage__c: this.xiper
         };
         console.log('===fieldValues=====',fieldValues);
+        
         updateStudentInquiryLead({ leadId: this.leadId,fieldValues : fieldValues })
         .then(registrationStudentId => {
             if (registrationStudentId.startsWith('Error')) {

@@ -20,7 +20,6 @@ public without sharing class profileStudentClass {
             FROM Student__c 
             WHERE Name=:trimmedStudentId LIMIT 1];
             
-
             // If no student found, log an error
             if (students.isEmpty()) {
                 System.debug('No student found for ID: ' + trimmedStudentId);
@@ -58,8 +57,59 @@ public without sharing class profileStudentClass {
         }
     }
 
+    @AuraEnabled(cacheable=true)
+    public static String getStudentAttachment(String studentId) {
+        try {
+            System.debug('Fetching Image for Student ID: ' + studentId);
+    
+            if (String.isEmpty(studentId)) {
+                return 'Error: Student ID is missing!';
+            }
+    
+            // Fetch the latest uploaded file for the student
+            List<ContentDocumentLink> links = [
+                SELECT ContentDocumentId 
+                FROM ContentDocumentLink 
+                WHERE LinkedEntityId = :studentId 
+                LIMIT 1
+            ];
+    
+            if (links.isEmpty()) {
+                System.debug('No image found for student ID: ' + studentId);
+                return '';
+            }
+    
+            String contentDocId = links[0].ContentDocumentId;
+    
+            // Get the latest version of the image
+            List<ContentVersion> versions = [
+                SELECT Id 
+                FROM ContentVersion 
+                WHERE ContentDocumentId = :contentDocId 
+                ORDER BY CreatedDate DESC 
+                LIMIT 1
+            ];
+    
+            if (versions.isEmpty()) {
+                return '';
+            }
+    
+            String contentVersionId = versions[0].Id;
+            // String imageUrl = '/sfc/servlet.shepherd/version/download/' + contentVersionId;
+            String imageUrl = '/sfc/servlet.shepherd/version/renditionDownload?rendition=THUMB720BY480&versionId=068dL000007UeswQAC';
+            
+            System.debug('✅ Returning Image URL: ' + imageUrl);
+    
+            return imageUrl;
+    
+        } catch (Exception e) {
+            System.debug('❌ Error fetching student image: ' + e.getMessage());
+            return 'Error: ' + e.getMessage();
+        }
+    }
+    
 
-      
+    
     
 
      // Method to upload student image

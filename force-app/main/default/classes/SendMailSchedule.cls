@@ -1,4 +1,4 @@
-public with sharing class SendMailSchedule {
+public without sharing class SendMailSchedule {
 
     // Apex method to send emails based on the most recent record and future date
     @AuraEnabled

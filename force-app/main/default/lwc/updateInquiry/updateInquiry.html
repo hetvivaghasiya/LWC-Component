@@ -1,4 +1,4 @@
-
+<!-- 
 <template>
     <lightning-card title="Update Student Inquiry"  record-id={leadId} icon-name="custom:custom63">
         <div class="slds-m-around_medium">
@@ -41,14 +41,6 @@
                 onchange={handleInputChange}
                 type="tel">
             </lightning-input>
-<!-- 
-            <lightning-input
-                label="Date of Birth"
-                name="dob"
-                value={dob}
-                onchange={handleInputChange}
-                type="date">
-            </lightning-input> -->
 
             <lightning-combobox
                 label="Gender"
@@ -125,6 +117,45 @@
                 onclick={handleUpdate}
                 class="slds-m-top_medium">
             </lightning-button>
+        </div>
+    </lightning-card>
+</template> -->
+
+
+<template>
+    <lightning-card record-id={leadId} >
+        <div class="form-container">
+            <lightning-input label="First Name" name="firstName" value={firstName} onchange={handleInputChange} required></lightning-input>
+
+            <lightning-input label="Middle Name" name="middleName" value={middleName} onchange={handleInputChange}></lightning-input>
+
+            <lightning-input label="Last Name" name="lastName" value={lastName} onchange={handleInputChange} required></lightning-input>
+
+            <lightning-input label="Email" name="email" value={email} onchange={handleInputChange} type="email" required></lightning-input>
+
+            <lightning-input label="Phone" name="phone" value={phone} onchange={handleInputChange} type="tel"></lightning-input>
+
+            <lightning-combobox label="Gender" name="gender" value={gender} onchange={handleInputChange} options={genderOptions} required></lightning-combobox>
+
+            <lightning-input label="Street" name="street" value={street} onchange={handleInputChange}></lightning-input>
+
+            <lightning-input label="City" name="city" value={city} onchange={handleInputChange}></lightning-input>
+
+            <lightning-input label="Country" name="country" value={country} onchange={handleInputChange}></lightning-input>
+
+            <lightning-input label="State" name="state" value={state} onchange={handleInputChange}></lightning-input>
+
+            <lightning-input label="10th Pass Year" name="xpy" value={xpy} onchange={handleInputChange} type="number"></lightning-input>
+
+            <lightning-input label="10th Percentage" name="xper" value={xper} onchange={handleInputChange} type="number"></lightning-input>
+
+            <lightning-input label="12th Pass Year" name="xipy" value={xipy} onchange={handleInputChange} type="number"></lightning-input>
+
+            <lightning-input label="12th Percentage" name="xiper" value={xiper} onchange={handleInputChange} type="number"></lightning-input>
+
+            <div class="button-container">
+                <button class="update-button" onclick={handleUpdate}>Update</button>
+            </div>
         </div>
     </lightning-card>
 </template>
