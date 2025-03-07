@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <h1 class="titleHeading">College</h1>
     <div class="slds-grid slds-wrap slds-gutters slds-m-around_medium">
         <template for:each={college} for:item="clg">
@@ -20,6 +20,46 @@
                       </div>
                     </div>
                   </main>
+            </div>
+        </template>
+    </div>
+</template> -->
+
+
+<template>
+    <h1 class="titleHeading">College</h1>
+
+    <!-- Filter Input Aligned to Right -->
+    <div class="filter-container">
+        <span class="filter-heading">Filter by Name:</span>
+        <lightning-input 
+            type="text" 
+            placeholder="Search College..." 
+            onchange={handleFilterChange}>
+        </lightning-input>
+    </div>
+
+    <div class="slds-grid slds-wrap slds-gutters slds-m-around_medium">
+        <template for:each={filteredColleges} for:item="clg">
+            <div key={clg.Id}>
+                <main>
+                    <div class='card'>
+                        <img src={clg.college_Image__c} alt="University Image" class="contact-image" />
+                        <div class='info'>
+                            <div class="text">
+                                <h1 slot="title" class="title no-wrap">{clg.Name}</h1>
+                                <p>{clg.Description__c}</p>
+                                <p>{clg.City__c}</p>
+                                <button 
+                                    class="btnMoreInfo"
+                                    data-cid={clg.Id} 
+                                    onclick={navigateCourse}>
+                                    More Info
+                                </button> 
+                            </div>
+                        </div>
+                    </div>
+                </main>
             </div>
         </template>
     </div>

@@ -1,4 +1,55 @@
-/* Table Container */
+
+.status-bar-unpaid {
+    width: 100%;
+    height: 5px;
+    background-color: red;
+    color: white;
+    padding: 2px;
+    text-align: center;
+}
+
+.status-bar-paid {
+    width: 100%;
+    height: 5px;
+    background-color: green;
+    color: white;
+    padding: 2px;
+    text-align: center;
+}
+
+.pay-button:disabled {
+    background-color: #dcdcdc;  
+    cursor: not-allowed;
+}
+
+
+/* .pay-button[disabled]::after {
+    content: " ✔";
+    color: green;
+} */
+
+
+
+.status-paid {
+    background-color: #4caf50; 
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.status-unpaid {
+    background-color: #f44336; 
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+
+
+
+
+
+
 .custom-table-container {
     overflow-x: auto;
     padding: 10px;
@@ -7,7 +58,6 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Table Styles */
 .slds-table {
     background: white;
     border-radius: 8px;
@@ -18,18 +68,16 @@
 .slds-table th, 
 .slds-table td {
     padding: 12px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
-/* Table Headers */
 .slds-text-title_caps {
-    background: #0070d2; /* Salesforce Blue */
+    background: #0070d2; 
     color: white;
     text-transform: uppercase;
 }
 
-/* Alternating Row Colors */
 .slds-table tbody tr:nth-child(even) {
     background: #f4f6f9;
 }
@@ -40,7 +88,6 @@
     font-weight: bold;
     line-height: normal;
 }
-/* Pay Button */
 .pay-button {
     background: #33383b;
     color: white;
@@ -52,14 +99,13 @@
     transition: all 0.3s ease-in-out;
 }
 
-.pay-button:hover {
+/* .pay-button:hover {
     background: #ffffff;
     color:black;
     border-color: black;
     transform: translateY(-2px);
-}
+} */
 
-/* Error Message */
 .slds-text-color_error {
     font-weight: bold;
     text-align: center;

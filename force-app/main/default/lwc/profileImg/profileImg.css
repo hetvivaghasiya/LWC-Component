@@ -11,6 +11,7 @@
     background-color: #ffffff;
 }
 
+
 .container {
     display: flex;
     align-items: center;
@@ -23,6 +24,7 @@ h1 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 30px;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 
 /* Profile Image & Upload Section */
@@ -56,14 +58,35 @@ lightning-file-upload {
 }
 
 /* Student Information Card */
-.student-card {
+/* .student-card {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     text-align: left;
     width: 350px;
+} */
+.student-card {
+    /* padding: 20px; */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    text-align: left;
+    width: 600px;
 }
+
+.student-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+
+.student-info,
+.address-info {
+    width: 48%;
+    margin-bottom: 20px;
+}
+
 
 .student-card h2 {
     text-align: center;

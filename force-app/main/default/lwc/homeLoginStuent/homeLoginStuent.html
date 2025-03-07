@@ -1,0 +1,55 @@
+<template>
+    <div>
+        <c-carousel1></c-carousel1>
+    </div>
+    <h1 style="text-align: center; font-size: 35px; color:#333; margin-top: 30px;">Events</h1>
+    <div class="slds-grid slds-wrap slds-gutters slds-m-horizontal_xx-large">
+        <template if:true={events}>
+            <template for:each={events} for:item="event">
+                <div class="slds-col slds-size_1-of-3 slds-p-around_medium" key={event.Id}>
+                        <img src={event.Event_Image__c} alt="events Image" class="contact-image" />
+                        <div class="overlay">
+                            <h1>{event.Name}</h1>
+                            <h2 style="font-weight: bolder;">{event.College__r.Name}</h2>
+                            <p style="text-align: center; margin-bottom: 20px;">{event.Description__c}</p>
+                            <button class="btnMoreInfo" onclick={handleOpenModal} data-id={event.Id} data-name={event.Name}>
+                                Register
+                            </button>
+                        </div>
+                </div>
+            </template>
+        </template>
+        <template if:false={events}>
+            <p class="slds-p-around_medium">No events available.</p>
+        </template>
+    </div>
+
+    <!-- Modal -->
+    <template if:true={isModalOpen}>
+        <section role="dialog" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">Events Details</h2>
+                    <button class="slds-button slds-button_icon slds-modal__close" onclick={handleCloseModal}>✖</button>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium">
+                    <p><strong>Events Name:</strong> {selectedSubject.Name}</p>
+                    <lightning-input type="text" label="Your Name" value={userName} data-field="userName" onchange={handleInputChange}></lightning-input>
+                    <lightning-input type="email" label="Your Email" value={userEmail} data-field="userEmail" onchange={handleInputChange}></lightning-input>
+                    
+                    <!-- Success Message (Only shown after clicking Submit) -->
+                    <template if:true={showSuccessMessage}>
+                        <p class="slds-text-color_success slds-m-top_medium">Form submitted successfully! ✅</p>
+                    </template>
+                </div>
+
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={handleCloseModal}>Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={handleSubmit}>Submit</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

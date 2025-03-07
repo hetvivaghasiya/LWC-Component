@@ -23,4 +23,5 @@ export default class LoginNavbar extends NavigationMixin(LightningElement) {
             window.location.reload(); // Reload after redirect
         },100); 
     }
+    
 }

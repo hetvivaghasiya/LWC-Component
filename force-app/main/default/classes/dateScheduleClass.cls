@@ -38,7 +38,7 @@ public without sharing class dateScheduleClass {
             // Prepare Email Body with HTML Formatting
             String emailBody = '<html><body>';
             emailBody += '<p>Dear <strong>' + student.First_Name__c + '</strong>,</p>';
-            emailBody += '<p>We are pleased to inform you that your Exam appointment has been scheduled.</p>';
+            emailBody += '<p>We are pleased to inform you that your Exam appointment has been Rescheduled.</p>';
             emailBody += '<p><strong>📅 Exam Date:</strong> <span style="color: #2E7D32; font-weight: bold;">' + selectedDate + '</span></p>';
             emailBody += '<hr style="border: 1px solid #ccc;">';
             emailBody += '<h3 style="color: #1976D2;">Important Instructions:</h3>';

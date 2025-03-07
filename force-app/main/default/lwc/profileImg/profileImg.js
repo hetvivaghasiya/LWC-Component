@@ -113,6 +113,9 @@ export default class ProfileImg extends LightningElement {
     get imageSrc() {
         return this.imageUrl;
     }
+    get showGraduationDetails() {
+        return this.studentData?.Graduation_Year__c && this.studentData?.Graduation_CGPA__c;
+    }
     
     
 }

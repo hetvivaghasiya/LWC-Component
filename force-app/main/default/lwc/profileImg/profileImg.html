@@ -1,18 +1,18 @@
 <template>
     <div class="custom-card">
-        <template if:true={studentData}>
-            <h1>Hello, {studentData.Name__c}</h1>
-        </template>
         <div class="container">
 
             <!-- Left Side: Profile Image & Upload Button -->
             <div class="profile-card">
+                <template if:true={studentData}>
+                    <h1>Hello, {studentData.Name__c}</h1>
+                </template>
                 <template if:true={imageUrl}>
                     <img src={imageSrc} alt="Uploaded Image" class="uploaded-image" />
                 </template>
 
                 <template if:false={imageUrl}>
-                    <p class="no-image-text">No image found.</p>
+                    <img src="https://cdn1.iconfinder.com/data/icons/bokbokstars-121-classic-stock-icons-1/512/person-man.png" alt="Default Image" class="uploaded-image" />
                 </template>
 
                 <lightning-file-upload
@@ -23,19 +23,48 @@
                     record-id={studentId}>
                 </lightning-file-upload>
             </div>
-
-            <!-- Right Side: Student Information (In a Separate Card) -->
+          
             <template if:true={studentData}>
                 <div class="student-card">
-                    <h2>Student Information</h2>
-                    <p><strong>Name:</strong> {studentData.Name__c} {studentData.Middle_Name__c} {studentData.Last_Name__c}</p>
-                    <p><strong>Email:</strong> {studentData.Email__c}</p>
-                    <p><strong>Status:</strong> {studentData.Status__c}</p>
-                    <p><strong>Gender:</strong> {studentData.Gender__c}</p>
-                    <p><strong>Phone Number:</strong> {studentData.Phone_Number__c}</p>
+                    <h2>Student  Information</h2>
+                    <div class="student-container">
+                        <div class="student-info">
+                            <p><strong>Name:</strong> {studentData.Name__c} {studentData.Middle_Name__c} {studentData.Last_Name__c}</p>
+                            <p><strong>Email:</strong> {studentData.Email__c}</p>
+                            <p><strong>Status:</strong> {studentData.Status__c}</p>
+                            <p><strong>Gender:</strong> {studentData.Gender__c}</p>
+                            <p><strong>Phone Number:</strong> {studentData.Phone_Number__c}</p>
+                        </div>
+                        <div class="address-info">
+                            <!-- <h2>Address Information</h2> -->
+                            <p><strong>Country:</strong> {studentData.Country__c}</p>
+                            <p><strong>State:</strong> {studentData.State__c}</p>  
+                            <p><strong>City:</strong> {studentData.City__c}</p>  
+                            <p><strong>Street:</strong> {studentData.Street__c}</p>  
+                            <p><strong>Pincode:</strong> {studentData.Pin_Code__c}</p>  
+                        </div>
+                    </div>
+                    <h2>Educational Information</h2>
+                    <div class="student-container">
+                        <div class="student-info">
+                            <p><strong>10th Details:</strong>{studentData.X10th_Percentage__c}% ({studentData.X10th_Pass_Year__c}) </p>
+                            <p><strong>12th Details:</strong>{studentData.X12th_Percentage__c}% ({studentData.X12th_Pass_Year__c})</p>
+                            <template if:true={showGraduationDetails}>
+                                <p><strong>Graduation CGPA:</strong> {studentData.Graduation_CGPA__c}</p>
+                                <p><strong>Graduation Year:</strong> {studentData.Graduation_Year__c}</p>
+                            </template>
+                        </div>
+                        <div class="address-info">
+                            <p><strong>Enrollment ID:</strong> {studentData.Name}</p>
+                            <p><strong>College Name:</strong> {studentData.College__r.Name}</p>
+                            <p><strong>Course Name:</strong> {studentData.Course__r.Name}</p>   
+                        </div>
+                    </div>
                 </div>
             </template>
+            
 
         </div>
+        
     </div>
 </template>

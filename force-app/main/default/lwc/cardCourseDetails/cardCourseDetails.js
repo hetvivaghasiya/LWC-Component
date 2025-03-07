@@ -1,4 +1,4 @@
-// // import { track, wire, api, LightningElement } from 'lwc';
+ // // import { track, wire, api, LightningElement } from 'lwc';
 // // import getCourse from '@salesforce/apex/cardCourse.getCourse';
 // // // import getLeadsWithMultiPicklistValues from '@salesforce/apex/cardCourse.getLeadsWithMultiPicklistValues';
 // // import { CurrentPageReference } from 'lightning/navigation';

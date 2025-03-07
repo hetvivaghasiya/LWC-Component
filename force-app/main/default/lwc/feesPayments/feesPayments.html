@@ -8,6 +8,8 @@
                             <th scope="col" class="slds-text-align_left">Semester</th>
                             <th scope="col" class="slds-text-align_left">Start Date</th>
                             <th scope="col" class="slds-text-align_left">End Date</th>
+                            <th scope="col" class="slds-text-align_left">Semester Fees</th>
+                            <th scope="col" class="slds-text-align_center">Payment</th>
                             <th scope="col" class="slds-text-align_center">Action</th>
                         </tr>
                     </thead>
@@ -15,16 +17,26 @@
                         <template for:each={semesters} for:item="semester">
                             <tr key={semester.Id}>
                                 <td class="slds-cell-wrap">{semester.Name}</td>
-                                <td class="slds-cell-wrap">{semester.Start_Date__c}</td>
+                                <td class="slds-cell-wrap">{semester.Start_date__c}</td>
                                 <td class="slds-cell-wrap">{semester.End_Date__c}</td>
+                                <td class="slds-cell-wrap">₹ {semester.Semester_Fees__c}</td>
                                 <td class="slds-text-align_center">
                                     <button 
-                                        class="pay-button" 
+                                        class="pay-button slds-button slds-button_neutral" 
                                         data-id={semester.Id} 
-                                        onclick={handlePayClick}>
-                                        Pay
+                                        onclick={handlePayClick}
+                                        disabled={semester.buttonDisabled}>
+                                        {semester.buttonText}
                                     </button>
                                 </td>
+                                <td class="slds-text-align_center">
+                                    <template if:true={semester.isPaid}>
+                                        <div class="slds-text-align_center">
+                                            <lightning-icon icon-name="utility:success" alternative-text="Paid" size="small" class="slds-icon-text-success"></lightning-icon>
+                                        </div>
+                                    </template>
+                                </td>
+                                
                             </tr>
                         </template>
                     </tbody>
@@ -34,6 +46,11 @@
 
         <template if:true={errorMessage}>
             <p class="slds-text-color_error slds-p-around_medium">{errorMessage}</p>
+        </template>
+
+        <!-- Toast Notifications for Success/Error -->
+        <template if:true={paymentStatusMessage}>
+            <div class="slds-text-color_success slds-p-around_medium">{paymentStatusMessage}</div>
         </template>
     </lightning-card>
 </template>

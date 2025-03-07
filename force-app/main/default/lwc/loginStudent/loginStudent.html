@@ -10,12 +10,11 @@
             <input type="password" class="form-field animation a4" placeholder="Password" onchange={handlePasswordChange} value={password}>
             <button class="animation a6" onclick={handleLogin}>LOGIN</button>
 
-            <!-- Success Message -->
+        
             <template if:true={successMessage}>
                 <p class="slds-text-color_success slds-text-heading_medium slds-m-top_small">{successMessage}</p>
             </template>
 
-            <!-- Error Message -->
             <template if:true={errorMessage}>
                 <p class="slds-text-color_error slds-text-heading_medium slds-m-top_small">{errorMessage}</p>
             </template>
@@ -26,3 +25,31 @@
         <div class="right"></div>
       </div>
 </template>
+
+
+<!-- <template>
+  <div class="container">
+      <div class="left">
+        <div class="header">
+          <h2 class="animation a1">Welcome Back, Astha</h2>
+          <h4 class="animation a2">Log in to your account using email and password</h4>
+        </div>
+        <form class="form" onsubmit={handleLogin}>
+          <input type="Eid" class="form-field animation a3" placeholder="Enrollment Id" value={studentId} onchange={handleInputChange}>
+          <input type="password" class="form-field animation a4" placeholder="Password" onchange={handlePasswordChange} value={password}>
+          <button type="submit" class="animation a6">LOGIN</button> 
+          
+          <template if:true={successMessage}>
+              <p class="slds-text-color_success slds-text-heading_medium slds-m-top_small">{successMessage}</p>
+          </template>
+
+         
+          <template if:true={errorMessage}>
+              <p class="slds-text-color_error slds-text-heading_medium slds-m-top_small">{errorMessage}</p>
+          </template>
+
+          </form>
+      </div>
+      <div class="right"></div>
+    </div>
+</template> -->

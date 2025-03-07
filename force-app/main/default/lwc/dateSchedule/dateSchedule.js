@@ -212,7 +212,7 @@ export default class DateSchedule extends LightningElement {
         let today = new Date();
         let futureDates = [];
 
-        for (let i = 0; i <= 3; i++) {
+        for (let i = 3; i <= 5; i++) {
             let futureDate = new Date(today);
             futureDate.setDate(today.getDate() + i);
 

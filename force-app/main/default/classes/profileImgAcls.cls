@@ -13,14 +13,26 @@ public without sharing class profileImgAcls {
             
              List<Student__c> students=[SELECT Id, 
              Name__c,
+             Name,
              Last_Name__c,  
              Middle_Name__c,
              Phone_Number__c,
              Email__c,
              Gender__c,
              Status__c,
-             Course__c,
-             College__c
+             Course__r.Name,
+             College__r.Name,
+             Country__c,
+             State__c,
+             City__c,
+             Street__c,
+             Pin_Code__c,
+             X10th_Pass_Year__c,
+             X10th_Percentage__c,
+             X12th_Pass_Year__c,
+             X12th_Percentage__c,
+             Graduation_Year__c,
+             Graduation_CGPA__c
             FROM Student__c 
             WHERE Name=:trimmedStudentId LIMIT 1];
             

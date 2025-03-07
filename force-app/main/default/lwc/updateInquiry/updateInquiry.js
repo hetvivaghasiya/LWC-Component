@@ -101,6 +101,13 @@ export default class UpdateInquiry extends NavigationMixin(LightningElement) {
             console.error('Lead ID is missing');
             return;
         }
+        this.dispatchEvent(
+            new ShowToastEvent({
+                title: 'Updating Student Details and check your Email...',
+                message: 'Please wait while we update the student record...',
+                variant: 'info'
+            })
+        );
         const fieldValues = {
             First_Name__c: this.firstName,
             Middle_Name__c: this.middleName,
@@ -112,10 +119,10 @@ export default class UpdateInquiry extends NavigationMixin(LightningElement) {
             City__c: this.city,
             Country__c: this.country,
             State__c: this.state,
-            X10th_Pass_Year__c: this.xpy,
-            X10th_Percentage__c: this.xper,
-            X12th_Pass_Year__c: this.xipy,
-            X12th_Percentage__c: this.xiper
+            X10th_Pass_Year__c: this.xpy ? parseInt(this.xpy, 10) : null,  // Convert to Integer
+            X10th_Percentage__c: this.xper ? parseFloat(this.xper) : null,  // Convert to Decimal
+            X12th_Pass_Year__c: this.xipy ? parseInt(this.xipy, 10) : null,  // Convert to Integer
+            X12th_Percentage__c: this.xiper ? parseFloat(this.xiper) : null
         };
         console.log('===fieldValues=====',fieldValues);
         
@@ -124,14 +131,14 @@ export default class UpdateInquiry extends NavigationMixin(LightningElement) {
             if (registrationStudentId.startsWith('Error')) {
                 throw new Error(registrationStudentId);
             }
-            const guestSiteUrl = `https://kriittechnologies44-dev-ed.develop.my.site.com/studentEnrollmentProcess/schedule-date?registrationId=${registrationStudentId}`;
+        // const guestSiteUrl = `https://kriittechnologies44-dev-ed.develop.my.site.com/studentEnrollmentProcess/schedule-date?registrationId=${registrationStudentId}`;
 
-        this[NavigationMixin.Navigate]({
-            type: 'standard__webPage',
-            attributes: {
-                url: guestSiteUrl
-            }
-        });
+        // this[NavigationMixin.Navigate]({
+        //     type: 'standard__webPage',
+        //     attributes: {
+        //         url: guestSiteUrl
+        //     }
+        // });
 
         // Refresh lead data after update
         return refreshApex(this.wiredLeadResponse);
