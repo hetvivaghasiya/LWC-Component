@@ -112,7 +112,7 @@ public without sharing class cardCourse {
     public static List<Course__c> getCourse(String cid) {
         try {
             List<Course__c> course = [
-                SELECT Id, Course_Fees__c, Eligibility_Criteria__c, Credits__c, Course_Description__c, Name, Course_Year__c, Course_Code__c 
+                SELECT Id, Course_Fees__c, Eligibility_Criteria__c, Credits__c, Course_Description__c, Name, Course_Year__c, Course_Code__c,College__r.Name
                 FROM Course__c
                 WHERE College__c = :cid
             ];
@@ -194,8 +194,8 @@ public without sharing class cardCourse {
     
             // Fetch Semester details for the given Course
             List<Semester__c> semesters = [SELECT Id, Name, Start_Date__c, End_Date__c, Semester_Fees__c, 
-                                           Course__r.Name, Course__r.Prerequisites__c, Course__r.College__r.Name,
-                                           (SELECT Id, Name FROM Subjects__r) 
+                                           Course__r.Name, Course__r.Prerequisites__c, Course__r.College__r.Name
+                                        //    (SELECT Id, Name FROM Subjects__r) 
                                            FROM Semester__c 
                                            WHERE Course__c = :courseId];
     

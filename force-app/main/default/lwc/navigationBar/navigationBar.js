@@ -1,36 +1,30 @@
-import { LightningElement,track } from 'lwc';
+import { LightningElement, track } from 'lwc';
+import ICONS from '@salesforce/resourceUrl/Icons';
+import { loadStyle } from 'lightning/platformResourceLoader';
 
 export default class NavigationBar extends LightningElement {
 
-    // @track isLoggedIn = false;
 
-    // toggleMobileMenu(event){
-    //     const evt = event.currentTarget;
-    //     evt.classList.toggle("open");
-    // }
-    toggleMobileMenu() {
-        // Select the hamburger menu and mobile menu elements
-        const hamburgerMenu = this.template.querySelector('.hamburger-menu');
-        const mobileMenu = this.template.querySelector('.mobile-menu');
-        
-        // Toggle the "open" class on the hamburger menu to change its appearance
-        hamburgerMenu.classList.toggle('open');
-        
-        // Toggle the "display" of the mobile menu
-        mobileMenu.classList.toggle('open');
+    renderedCallback() {
+
+                    loadStyle(this, ICONS + '/style.css');
+                }
+    @track showMenu = false; // Initially menu is hidden
+    
+    get menuClass() {
+        return this.showMenu ? 'nav-links show' : 'nav-links'; // Add 'show' class when active
+    }
+
+
+    get iconClass() {
+        return this.showMenu ? 'icon-menu active' : 'icon-menu';
+    }
+    handleHamburgerClicked() {
+        this.showMenu = !this.showMenu; // Toggle menu visibility
     }
 
     
-//login successful then display navbar
-    // connectedCallback() {
-    //     this.isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
-    // }
-
-    // //logout button
-    // handleLogout() {
-    //     sessionStorage.removeItem('isLoggedIn');
-    //     this.isLoggedIn = false;
-    //     window.location.href = "/student-login";
-    // }
-    
 }
+
+
+    

@@ -1,0 +1,97 @@
+/* Container Styling */
+.custom-tab-container {
+    background: rgb(248, 248, 248);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Tab Navigation */
+.slds-tabs_default__nav {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 0;
+    border-bottom: 3px solid #ccc;
+}
+
+.custom-tab {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333; /* Dark gray for better readability */
+    padding: 12px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    border-width: 1px;
+    border: none !important; /* Remove border */
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Hover Effect - Remove the blue underline
+.custom-tab:hover {
+    color: #333;
+    text-decoration: none !important;
+    outline: none !important;
+    border: none !important; 
+    box-shadow: none !important;
+} */
+
+/* Remove focus outline (blue line) */
+.custom-tab:focus,
+.custom-tab:active {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove blue underline from links */
+a, 
+a:link:not(.slds-button, .slds-dropdown__item > a), 
+a:visited:not(.slds-button, .slds-dropdown__item > a) {
+    color: #333;
+    text-decoration: none !important;
+}
+
+a:hover, 
+a:focus, 
+a:active {
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+/* Active Tab */
+.slds-tabs_default__link.active-tab {
+    background: black;
+    color: white;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Tab Content */
+.custom-tab-content {
+    margin-top: 15px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Content Box */
+.custom-box {
+    padding: 20px;
+    border-radius: 10px;
+    background: #f2f2f2;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    color: #444;
+}
+
+/* Success Message */
+.success-message {
+    font-size: 14px;
+    font-weight: bold;
+    color: green;
+    margin-top: 10px;
+}
+.tab-icon {
+    margin-right: 10px;
+}

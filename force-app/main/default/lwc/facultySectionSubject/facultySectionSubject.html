@@ -7,8 +7,8 @@
                    class="slds-tabs_default__link custom-tab {profileTabClass}" 
                    data-id="profile" 
                    onclick={handleTabClick}>
-                   <lightning-icon icon-name="utility:user" size="small" class="tab-icon"></lightning-icon>
-                    Profile
+                   <lightning-icon icon-name="utility:education" size="small" class="tab-icon"></lightning-icon>
+                    Faculty
                 </a>
             </li>
             <li class="slds-tabs_default__item" role="presentation">
@@ -16,19 +16,11 @@
                    class="slds-tabs_default__link custom-tab {documentTabClass}" 
                    data-id="document" 
                    onclick={handleTabClick}>
-                   <lightning-icon icon-name="utility:upload" size="small" class="tab-icon"></lightning-icon>
-                    Document
+                   <lightning-icon icon-name="utility:topic" size="small" class="tab-icon"></lightning-icon>
+                    Subjects
                 </a>
             </li>
-            <li class="slds-tabs_default__item" role="presentation">
-                <a href="javascript:void(0);" 
-                   class="slds-tabs_default__link custom-tab {feesPaymentTabClass}" 
-                   data-id="fees-payment" 
-                   onclick={handleTabClick}>
-                   <lightning-icon icon-name="utility:money" size="small" class="tab-icon"></lightning-icon>
-                    Fees Payment
-                </a>
-            </li>
+           
         </ul>
 
         <!-- Tab Content -->
@@ -36,21 +28,16 @@
             <template if:true={isProfileActive}>
                 <!-- Profile Section -->
                 <div class="slds-box slds-box_xx-small custom-box">
-                    <c-profile-img></c-profile-img>
+                    <c-faculty-card></c-faculty-card>
                 </div>
             </template>
             <template if:true={isDocumentActive}>
                 <!-- Document Section -->
                 <div class="slds-box slds-box_xx-small custom-box">
-                   <c-uploade-document></c-uploade-document>
+                   <c-subject-card-section></c-subject-card-section>
                 </div>
             </template>
-            <template if:true={isFeesPaymentActive}>
-                <!-- Fees Payment Section -->
-                <div class="slds-box slds-box_xx-small custom-box">
-                   <c-fees-payments></c-fees-payments>
-                </div>
-            </template>
+           
         <!-- </div> -->
     <!-- </div> -->
 </template>

@@ -1,0 +1,48 @@
+
+<template>
+
+    <div class="heading">
+        <h1> <lightning-icon icon-name="custom:custom14" alternative-text="Faculty" title="Faculty" ></lightning-icon>
+           &nbsp;  
+               Subject Information 
+           </h1>
+    </div>
+
+    <template for:each={subjects} for:item="subject">
+        <div key={subject.Id} class='card' data-id={subject.Id} onclick={handleCardClick}>
+            <h2>{subject.Name}</h2>
+
+            
+            <!-- Subject Table -->
+            <template if:true={subject.showTable}>
+                <div class="tableContainer">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Subject Code</th>
+                                <th>Description</th>
+                                <th>Image</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr key={subject.Id}>
+                                <td>{subject.Name}</td>
+                                <td>{subject.Subject_Code__c}</td>
+                                <td>{subject.Subject_Description__c}</td>
+                                <td>
+                                    <template if:true={subject.Subject_Image__c}>
+                                        <img src={subject.Subject_Image__c} alt={subject.Name} style="width: 50px; height: 50px;" />
+                                    </template>
+                                    <template if:false={subject.Subject_Image__c}>
+                                        No Image
+                                    </template>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </template>
+        </div>
+    </template>
+</template>

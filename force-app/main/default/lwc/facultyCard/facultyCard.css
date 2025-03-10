@@ -1,0 +1,91 @@
+
+.faculty-card {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.20);
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 10px;
+    transition: transform 0.3s ease, height 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    overflow: hidden; 
+    max-height: 400px;
+}
+
+.faculty-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+.faculty-card.expanded {
+    transform: scale(1.05);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+    max-height: 600px; 
+}
+
+
+.faculty-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.faculty-card p {
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.tableContainer {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow-y: auto;
+    max-height: 200px; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #e1f1ff;
+}
+
+.error-message {
+    color: red;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 20px;
+}
+
+lightning-spinner {
+    display: block;
+    margin: 20px auto;
+}
+

@@ -33,6 +33,11 @@
     justify-content: space-between;
     align-items: center;
 }
+.submit-css{
+    --slds-c-button-brand-color-background: #33383b;
+    --slds-c-button-brand-color-border: #33383b;
+    margin-left: 20px;
+}
 
 
 body {

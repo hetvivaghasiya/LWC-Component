@@ -1,6 +1,7 @@
 import { LightningElement, track, api,wire } from 'lwc';
 import studentProfileImg from '@salesforce/apex/homeStudentLoginClass.studentProfileImg';
-import getSubjects from '@salesforce/apex/homeStudentLoginClass.getSubjects';
+import getEvents from '@salesforce/apex/homeStudentLoginClass.getEvents';
+// import getSubjectsByCourse from '@salesforce/apex/homeStudentLoginClass.getSubjectsByCourse';
 import customImage from './homeLoginS.html'; 
 
 export default class HomeLoginStudent extends LightningElement {
@@ -19,12 +20,15 @@ export default class HomeLoginStudent extends LightningElement {
         @track userName = '';
         @track userEmail = '';
         @track showSuccessMessage = false;
+        @track collegeImage='';
+        @track collegeName='';
+        @track collegeDes='';
         @track event='';
         errorMessage = '';
     
         connectedCallback() {
             const studentId = sessionStorage.getItem('studentId');
-            console.log('📢 Student ID from session:', studentId);
+            console.log('Student ID from session:', studentId);
             if (studentId) {
                 this.fetchStudentProfile(studentId);
             } else {
@@ -38,6 +42,18 @@ export default class HomeLoginStudent extends LightningElement {
                     if (result) {
                         this.studentData = result;
                         this.fetchSubjects(result.Course__c, result.College__c);
+                    // Check if College__r and its fields exist
+                    if (result.College__r) {
+                        this.collegeImage = result.College__r.college_Image__c || '';
+                        this.collegeName = result.College__r.Name || 'We will help you find the right workplace for you.';
+                        this.collegeDes = result.College__r.Description__c || 'We will help you find the right workplace for you.';
+                        console.log('College Name:', this.collegeName);
+                        console.log('College Image:', this.collegeImage);
+                    } else {
+                        console.warn('⚠ No College Data found.');
+                        this.collegeName = 'We will help you find the right workplace for you.';    
+                    }
+
                     } else {
                         this.errorMessage = 'No profile data found for this Student ID.';
                     }
@@ -49,16 +65,28 @@ export default class HomeLoginStudent extends LightningElement {
         }
     
         fetchSubjects(course, college) {
-            getSubjects({ course, college })
+            getEvents({ course, college })
                 .then(result => {
                     this.events = result;
-                    console.log('📢 events:', this.events);
+                    console.log('events:', this.events);
                 })
                 .catch(error => {
                     console.error('Error fetching events:', error);
                     this.errorMessage = 'Error fetching events.';
                 });
         }
+
+        // fetchSubjects(courseId) {
+        //     getSubjectsByCourse({ courseId })
+        //         .then(result => {
+        //             this.subjects = result;
+        //             console.log('events:', this.subjects);
+        //         })
+        //         .catch(error => {
+        //             console.error('Error fetching events:', error);
+        //             this.errorMessage = 'Error fetching events.';
+        //         });
+        // }
         
       
         handleOpenModal(event) {
@@ -79,7 +107,7 @@ export default class HomeLoginStudent extends LightningElement {
             this[field] = event.target.value;
         }
     
-        handleSubmit() {
+        handleSubmit() {    
             if (this.userName && this.userEmail) {
                 this.showSuccessMessage = true; // Show success message
     

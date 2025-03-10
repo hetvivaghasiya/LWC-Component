@@ -1,7 +1,23 @@
 <template>
-    <div>
-        <c-carousel1></c-carousel1>
-    </div>
+          <!-- College Image Header -->
+    <template if:true={collegeImage}>
+        <div class="atf_20">
+            <div class="responsive-container-block big-container">
+              <img class="img-bg image-block" src={collegeImage}>
+              <div class="responsive-container-block blur-container">
+                <div class="container-block blur-container">
+                  <p class="text-blk section-head">
+                    {collegeName}
+                  </p>
+                  <p class="text-blk section-subhead">
+                   {collegeDes}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </template>
+    
     <h1 style="text-align: center; font-size: 35px; color:#333; margin-top: 30px;">Events</h1>
     <div class="slds-grid slds-wrap slds-gutters slds-m-horizontal_xx-large">
         <template if:true={events}>
@@ -11,7 +27,7 @@
                         <div class="overlay">
                             <h1>{event.Name}</h1>
                             <h2 style="font-weight: bolder;">{event.College__r.Name}</h2>
-                            <p style="text-align: center; margin-bottom: 20px;">{event.Description__c}</p>
+                            <p style="text-align: center; margin-bottom: 20px;">{event.Events_Description__c}</p>
                             <button class="btnMoreInfo" onclick={handleOpenModal} data-id={event.Id} data-name={event.Name}>
                                 Register
                             </button>
@@ -23,6 +39,20 @@
             <p class="slds-p-around_medium">No events available.</p>
         </template>
     </div>
+
+
+    <!-- Subjects  -->
+     <!-- <div>
+        <template if:true={subjects}>
+            <template for:each={subjects} for:item="subject">
+                <div class="slds-col slds-size_1-of-3 slds-p-around_medium" key={subject.Id}>
+                     <p>{subject.Name}</p>
+                     <p>{subject.Subject_Description__c}</p>
+                    </div>
+            </template>
+
+        </template>
+     </div> -->
 
     <!-- Modal -->
     <template if:true={isModalOpen}>

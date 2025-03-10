@@ -1,0 +1,56 @@
+<template>
+    <!-- Show loading spinner while data is being fetched -->
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+    </template>
+
+    <!-- Show error message if any -->
+    <template if:true={error}>
+        <div class="error">
+            <p>Error fetching data: {error.message}</p>
+        </div>
+    </template>
+   
+    <div class="heading">
+     <h1> <lightning-icon icon-name="custom:custom14" alternative-text="Faculty" title="Faculty" ></lightning-icon>
+        &nbsp;  
+            Faculty Information 
+        </h1>
+    </div>
+    <!-- Loop through colleges and display their faculty records -->
+        <!-- <lightning-card title="Faculty List"> -->
+            <template if:true={errorMessage}>
+                <p>{errorMessage}</p>
+            </template>
+             
+                <template if:true={facultyList}>
+                
+                        <template for:each={facultyList} for:item="faculty">
+                            <div key={faculty.Id} class="faculty-card" data-id={faculty.Id} onclick={handleCardClick}>
+                                <h3>{faculty.Name} {faculty.Last_Name__c}</h3>
+                                <p>{faculty.Position__c}</p>
+                                
+                               
+                                    <template if:true={faculty.showTable}> 
+                                        <div class="tableContainer ">
+                                            <table class="faculty-details">
+                                                <tr>
+                                                    <td>Email:</td>
+                                                    <td>Position</td>
+                                                </tr>
+                                                <tr>
+                                                    
+                                                    <td>{faculty.Email__c}</td>
+                                                    <td>{faculty.Position__c}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </template>
+                            </div>
+                        </template>
+                    
+                </template>
+            
+        <!-- </lightning-card> -->
+    
+</template>
