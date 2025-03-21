@@ -233,7 +233,7 @@ public without sharing class cardCourse {
         email.setToAddresses(new String[]{emailAddress});
         email.setSaveAsActivity(false);
         email.setSubject('Thank You, ' + firstName + ' ' + lastName + ' for Your Inquiry');
-
+        email.setSenderDisplayName('Student Enrollment Process');
         String body = '<p>Dear ' + firstName + ',</p>';
         body += '<p>Your inquiry details are as follows:</p>';
         body += '<ul>';
@@ -243,8 +243,9 @@ public without sharing class cardCourse {
         body += '<li><strong>Email:</strong> ' + emailAddress + '</li>';
         body += '<li><strong>Date of Birth:</strong> ' + dob + '</li>';
         body += '<li><strong>Gender:</strong> ' + gender + '</li>';
-        body += '<li><strong>Previous Education:</strong> ' + prevEdu + '</li>';
-        body += '<li><strong>Stream:</strong> ' + stream + '</li>';
+   
+        // body += '<li><strong>Previous Education:</strong> ' + prevEdu + '</li>';
+        // body += '<li><strong>Stream:</strong> ' + stream + '</li>';
         body += '</ul>';
 
         body += '<h3>Semester Details:</h3>';

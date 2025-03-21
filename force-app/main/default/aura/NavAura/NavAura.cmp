@@ -1,0 +1,22 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes" controller="NavAuraController">
+    <aura:attribute name="isLoggedIn" type="Boolean" default="false"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <div class="outer-container">
+        <div class="topnav">
+            <div class="brand">
+                <h1>Student Enrollment</h1>
+            </div>
+
+          
+                <div class="nav-links">
+                    <a href="/home-student-login">Home</a>
+                    <a href="/profile">Profile</a>
+                    <a href="/faculty-details">Academics</a>
+                    <a href="/about">About</a>
+                    <a href="#" onclick="{!c.handleLogout}">Logout</a>
+                </div>
+        </div>
+    </div>
+</aura:component>

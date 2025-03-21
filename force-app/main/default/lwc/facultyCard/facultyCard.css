@@ -15,6 +15,13 @@
     overflow: hidden; 
     max-height: 400px;
 }
+.heading {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
 
 .faculty-card:hover {
     transform: translateY(-5px);

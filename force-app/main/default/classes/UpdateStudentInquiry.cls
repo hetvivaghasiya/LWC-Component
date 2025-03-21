@@ -1,5 +1,6 @@
 public without sharing class UpdateStudentInquiry {
 
+   
     // Fetch inquiry data based on the provided recordId
     @AuraEnabled(cacheable = true)
     public static Student_Inquiry_Lead__c getInquiryData(Id leadId) {
@@ -14,6 +15,7 @@ public without sharing class UpdateStudentInquiry {
             throw new AuraHandledException('Error fetching inquiry data: ' + e.getMessage());
         }
     }
+
 
     @AuraEnabled
     public static String updateStudentInquiryLead(Id leadId, Map<String, Object> fieldValues) {

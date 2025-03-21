@@ -1,4 +1,4 @@
-public with sharing class subjectSectionClass {
+public without sharing class subjectSectionClass {
 
   
     // Fetch Student Profile (No changes here)

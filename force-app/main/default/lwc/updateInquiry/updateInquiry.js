@@ -1,6 +1,7 @@
 import { LightningElement, api, track, wire } from 'lwc';
 import updateStudentInquiryLead from '@salesforce/apex/UpdateStudentInquiry.updateStudentInquiryLead';
 import getStudentInquiryLead from '@salesforce/apex/UpdateStudentInquiry.getInquiryData';
+import getCourseList from '@salesforce/apex/cardCourse.getCourseList';
 import { NavigationMixin } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { CurrentPageReference } from 'lightning/navigation';
@@ -22,7 +23,8 @@ export default class UpdateInquiry extends NavigationMixin(LightningElement) {
     @track firstName;
     @track middleName;
     @track lastName;
-    @track email;   
+    @track course;
+    @track email;     
     @track phone;
     @track gender;
     @track street;
@@ -33,14 +35,14 @@ export default class UpdateInquiry extends NavigationMixin(LightningElement) {
     @track xper;
     @track xipy;
     @track xiper;
-    
-
+   
     connectedCallback() {
         this.getLeadIdFromUrl();
         if (this.leadId) {
             this.fetchLeadData();
         }
     }
+
 
     getLeadIdFromUrl() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -97,10 +99,30 @@ export default class UpdateInquiry extends NavigationMixin(LightningElement) {
         
     //Update record call "Update Button"
     handleUpdate() {  
+
+        const inputFields = this.template.querySelectorAll('lightning-input');
+        let isValid = true;
+
+        // Validate each field
+        inputFields.forEach(field => {
+            if (!field.value) {
+                field.reportValidity();
+                isValid = false;
+            }
+        });
+
+        if (!isValid) {
+            this.errorMessage = 'Please fill in all required fields.';
+            return;
+        }
+
+        this.errorMessage = '';  
+
         if (!this.leadId) {
             console.error('Lead ID is missing');
             return;
         }
+
         this.dispatchEvent(
             new ShowToastEvent({
                 title: 'Updating Student Details and check your Email...',
@@ -131,14 +153,6 @@ export default class UpdateInquiry extends NavigationMixin(LightningElement) {
             if (registrationStudentId.startsWith('Error')) {
                 throw new Error(registrationStudentId);
             }
-        // const guestSiteUrl = `https://kriittechnologies44-dev-ed.develop.my.site.com/studentEnrollmentProcess/schedule-date?registrationId=${registrationStudentId}`;
-
-        // this[NavigationMixin.Navigate]({
-        //     type: 'standard__webPage',
-        //     attributes: {
-        //         url: guestSiteUrl
-        //     }
-        // });
 
         // Refresh lead data after update
         return refreshApex(this.wiredLeadResponse);
@@ -167,55 +181,6 @@ export default class UpdateInquiry extends NavigationMixin(LightningElement) {
                 );  
             });
             
-
-           
-
-            // leadId = 'some-lead-id'; 
-                    // Construct the URL to the guest site
-                    // const guestSiteUrl = `https://kriittechnologies44-dev-ed.develop.my.site.com/studentEnrollmentProcess/schedule-date?leadId=${this.leadId}`;
-                    
-                    // // Navigate to the guest site URL
-                    // this[NavigationMixin.Navigate]({
-                    //     type: 'standard__webPage',
-                    //     attributes: {
-                    //         url: guestSiteUrl
-                    //     }
-                    // });
-                    // Redirect to guest site with Registration Student ID
-               
-            
-                
-            //Navigate Date Schedule
-           
-                // this[NavigationMixin.Navigate]({
-                //     type:"comm__namedPage",
-                //     attributes:{
-                //         name:"Schedule_Date__c",
-                //     } 
-                // });
-            
-
-            // //send mail
-            // sendEmail()
-            // .then(result => {
-            //     this.dispatchEvent(
-            //         new ShowToastEvent({
-            //             title: 'Success',
-            //             message: result,
-            //             variant: 'success'
-            //         })
-            //     );
-            //     console.log("email send From JS..");
-            // })
-            // .catch(error => {
-            //     this.dispatchEvent(
-            //         new ShowToastEvent({
-            //             title: 'Error updating lead',
-            //             message: error.body ? error.body.message : error.message,
-            //             variant: 'error'
-            //         })
-            //     );  
-            // });
     }
 
 

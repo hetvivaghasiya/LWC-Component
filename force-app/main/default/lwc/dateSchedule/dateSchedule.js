@@ -188,10 +188,11 @@ export default class DateSchedule extends LightningElement {
 
     interviewTips = [
         { id: 1, title: '📅 Plan Ahead', content: 'Select an Exam slot that works best for you and make sure to mark it in your calendar.' },
-        { id: 2, title: '📜 Research the Company', content: 'Understand the company’s mission, values, and latest news to show enthusiasm and preparedness.' },
-        { id: 3, title: '🗣️ Practice Common Questions', content: 'Prepare answers for common questions like.' },
-        { id: 4, title: '⏳ Arrive on Time', content: 'For in-person interviews, arrive at least 15 minutes early. For exam, log in 10 minutes before.' },
-        { id: 5, title: '📁 Bring Necessary Documents', content: 'Have copies of your resume, a notepad, and references handy for in-person exam.' },
+        { id: 2, title: '📜 Syllabus regarding the Exam', content: 'They often include sections on academic subjects (like Science, Mathematics, English), general aptitude (Reasoning, Verbal Ability, Quantitative Aptitude), and sometimes a general test. ' },
+        { id: 3, title: '✍️ Tips for preparation', content: 'Entrance exams test a candidate`s knowledge, skills, and aptitude in specific subjects or areas.' },
+        { id: 4, title: '🗣️ Practice Common Questions', content: 'Prepare answers for common questions.' },
+        { id: 5, title: '⏳ Arrive on Time', content: 'For in-person exam, arrive at least 15 minutes early. For exam, log in 10 minutes before.' },
+        { id: 6, title: '📁 Bring Necessary Documents', content: 'Have copies of your results, required certificates, a photo, and references handy for in-person exam.' },
     ];
 
     @wire(CurrentPageReference)
@@ -256,7 +257,7 @@ export default class DateSchedule extends LightningElement {
                 console.log('Success:', result);
 
                 // ✅ Set success message
-                this.successMessage = `✅ Interview Date Selected: ${this.selectedDate}`;
+                this.successMessage = `✅ Reschedule Exam Date Selected: ${this.selectedDate}`;
                 
                 // ❌ Disable all buttons
                 let buttons = this.template.querySelectorAll('.date-button');

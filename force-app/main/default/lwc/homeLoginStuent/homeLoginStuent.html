@@ -1,37 +1,33 @@
 <template>
-          <!-- College Image Header -->
     <template if:true={collegeImage}>
         <div class="atf_20">
             <div class="responsive-container-block big-container">
-              <img class="img-bg image-block" src={collegeImage}>
-              <div class="responsive-container-block blur-container">
-                <div class="container-block blur-container">
-                  <p class="text-blk section-head">
-                    {collegeName}
-                  </p>
-                  <p class="text-blk section-subhead">
-                   {collegeDes}
-                  </p>
+                <img class="img-bg image-block" src={collegeImage} alt="College Image" />
+                <div class="responsive-container-block blur-container">
+                    <div class="container-block blur-container">
+                        <p class="text-blk section-head">{collegeName}</p>
+                        <p class="text-blk section-subhead">{collegeDes}</p>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
     </template>
-    
+
     <h1 style="text-align: center; font-size: 35px; color:#333; margin-top: 30px;">Events</h1>
+
     <div class="slds-grid slds-wrap slds-gutters slds-m-horizontal_xx-large">
         <template if:true={events}>
             <template for:each={events} for:item="event">
                 <div class="slds-col slds-size_1-of-3 slds-p-around_medium" key={event.Id}>
-                        <img src={event.Event_Image__c} alt="events Image" class="contact-image" />
-                        <div class="overlay">
-                            <h1>{event.Name}</h1>
-                            <h2 style="font-weight: bolder;">{event.College__r.Name}</h2>
-                            <p style="text-align: center; margin-bottom: 20px;">{event.Events_Description__c}</p>
-                            <button class="btnMoreInfo" onclick={handleOpenModal} data-id={event.Id} data-name={event.Name}>
-                                Register
-                            </button>
-                        </div>
+                    <img src={event.Event_Image__c} alt="Event Image" class="contact-image" />
+                    <div class="overlay">
+                        <h1>{event.Name}</h1>
+                        <h2 style="font-weight: bolder;">{event.College__r.Name}</h2>
+                        <p style="text-align: center; margin-bottom: 20px;">{event.Events_Description__c}</p>
+                        <button class="btnMoreInfo" onclick={handleOpenModal} data-id={event.Id} data-name={event.Name}>
+                            Register
+                        </button>
+                    </div>
                 </div>
             </template>
         </template>
@@ -40,37 +36,25 @@
         </template>
     </div>
 
-
-    <!-- Subjects  -->
-     <!-- <div>
-        <template if:true={subjects}>
-            <template for:each={subjects} for:item="subject">
-                <div class="slds-col slds-size_1-of-3 slds-p-around_medium" key={subject.Id}>
-                     <p>{subject.Name}</p>
-                     <p>{subject.Subject_Description__c}</p>
-                    </div>
-            </template>
-
-        </template>
-     </div> -->
-
-    <!-- Modal -->
     <template if:true={isModalOpen}>
         <section role="dialog" class="slds-modal slds-fade-in-open">
             <div class="slds-modal__container">
                 <header class="slds-modal__header">
-                    <h2 class="slds-text-heading_medium">Events Details</h2>
+                    <h2 class="slds-text-heading_medium">Event Registration</h2>
                     <button class="slds-button slds-button_icon slds-modal__close" onclick={handleCloseModal}>✖</button>
                 </header>
 
                 <div class="slds-modal__content slds-p-around_medium">
-                    <p><strong>Events Name:</strong> {selectedSubject.Name}</p>
-                    <lightning-input type="text" label="Your Name" value={userName} data-field="userName" onchange={handleInputChange}></lightning-input>
-                    <lightning-input type="email" label="Your Email" value={userEmail} data-field="userEmail" onchange={handleInputChange}></lightning-input>
-                    
-                    <!-- Success Message (Only shown after clicking Submit) -->
+                    <p style="text-align: center; font-weight: bold; font-size: 25px;"><strong>Event Name:</strong> {selectedEvent.Name}</p>
+                
+                    <lightning-input type="text" label="Student ID" value={userName} disabled></lightning-input>
+                    <lightning-input type="email" label="Your Email" value={userEmail} disabled></lightning-input>
+
                     <template if:true={showSuccessMessage}>
                         <p class="slds-text-color_success slds-m-top_medium">Form submitted successfully! ✅</p>
+                    </template>
+                    <template if:true={showErrorMessage}>
+                        <p class="slds-text-color_error slds-m-top_medium">{errorMessage}</p>
                     </template>
                 </div>
 

@@ -108,13 +108,14 @@ public without sharing class feesPaymentSem {
                 // Parse response from Razorpay and get payment link
                 Map<String, Object> result = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
                 String paymentLink = (String) result.get('short_url');
-                
+                String razorpayPaymentId = (String) result.get('id'); 
                 // Create the Fee Payment Record
                 Fee_Payment__c paymentRecord = new Fee_Payment__c(
                     Student__c = studentId,  // Associate the fee payment with the student
                     Semester__c = semesterId,
                     Fee_Payment_Date__c = System.today(),
                     Amount__c = semesterFee,
+                    Reference_Number__c = razorpayPaymentId,
                     Status__c = 'Fees Due' // Set default status as 'Unpaid'
                 );
                 insert paymentRecord;

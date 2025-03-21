@@ -313,6 +313,26 @@ export default class CardCourseDetails extends LightningElement {
         //     this.showToast('Error', 'Please fill all required fields.', 'error');
         //     return;
         // }
+         // Get all input fields inside the form
+         const inputFields = this.template.querySelectorAll('lightning-input-field');
+         let isValid = true;
+ 
+         // Validate each field
+         inputFields.forEach(field => {
+             if (!field.value) {
+                 field.reportValidity();
+                 isValid = false;
+             }
+         });
+ 
+         if (!isValid) {
+             this.errorMessage = 'Please fill in all required fields.';
+             return;
+         }
+ 
+         this.errorMessage = ''; // Clear error if all fields are valid
+     
+        
         let formsttedDob=this.dob?new Date(this.dob):null;
         
         console.log('Form Data:', {

@@ -68,6 +68,27 @@
     border: solid #ccc;
 }
 
+/* Center the entire container on the page */
+.centered-container {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    background-color: #f0f0f0; /* Optional: To add background color to the page */
+}
+
+/* Styling for the card */
+.instruction-card-date {
+    background: #fffdfd;
+    width: fit-content;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    min-height: 120px;
+    border: solid #ccc;
+}
+
+
 /* Card Title */
 .card-title {
     font-size: 18px;

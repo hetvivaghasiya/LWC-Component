@@ -12,7 +12,7 @@
     </template>
    
     <div class="heading">
-     <h1> <lightning-icon icon-name="custom:custom14" alternative-text="Faculty" title="Faculty" ></lightning-icon>
+     <h1> <lightning-icon icon-name="utility:education" alternative-text="Faculty" title="Faculty" ></lightning-icon>
         &nbsp;  
             Faculty Information 
         </h1>
@@ -22,15 +22,11 @@
             <template if:true={errorMessage}>
                 <p>{errorMessage}</p>
             </template>
-             
                 <template if:true={facultyList}>
-                
                         <template for:each={facultyList} for:item="faculty">
                             <div key={faculty.Id} class="faculty-card" data-id={faculty.Id} onclick={handleCardClick}>
                                 <h3>{faculty.Name} {faculty.Last_Name__c}</h3>
                                 <p>{faculty.Position__c}</p>
-                                
-                               
                                     <template if:true={faculty.showTable}> 
                                         <div class="tableContainer ">
                                             <table class="faculty-details">
@@ -38,8 +34,7 @@
                                                     <td>Email:</td>
                                                     <td>Position</td>
                                                 </tr>
-                                                <tr>
-                                                    
+                                                <tr> 
                                                     <td>{faculty.Email__c}</td>
                                                     <td>{faculty.Position__c}</td>
                                                 </tr>
@@ -48,7 +43,6 @@
                                     </template>
                             </div>
                         </template>
-                    
                 </template>
             
         <!-- </lightning-card> -->

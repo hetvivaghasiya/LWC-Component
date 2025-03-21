@@ -1,40 +1,48 @@
-<template>
-    <lightning-card>
-        <lightning-card>
-             <!-- Instructions -->
-             <p class="instruction-text">
-                Please follow these interview guidelines carefully. After reviewing the instructions, 
-                select a suitable date for your interview from the available slots below.
-            </p>
-            <div class="slds-grid slds-wrap slds-p-around_medium">
-                <template for:each={interviewTips} for:item="tip">
-                    <div key={tip.id} class="slds-col slds-size_1-of-2 slds-p-around_small">
-                        <div class="instruction-card">
-                            <h3 class="card-title">{tip.title}</h3>
-                            <p class="card-content">{tip.content}</p>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </lightning-card>
-            <!-- Date Slots -->
+<template>    
+    <!-- <div class="centered-container"> -->
+        <div class="instruction-card">
             <div class="date-slot-container">
-                <p class="date-title">📅 Available Exam Dates</p>
+                <p class="date-title">📅 Available Reschedule Exam Dates</p>
                 <div class="date-buttons">
                     <template for:each={dateSlots} for:item="slot">
-                        <button 
-                            key={slot} 
-                            class="date-button"
-                            data-date={slot}
-                            onclick={handleClick}>{slot}
+                        <button key={slot} class="date-button" data-date={slot} onclick={handleClick}>
+                            {slot}
                         </button>
                     </template>
                 </div>
+                <template if:true={successMessage}>
+                    <p class="success-message">{successMessage}</p>
+                </template>
             </div>
-
-             <!-- ✅ Display success message -->
-        <template if:true={successMessage}>
-            <p class="success-message">{successMessage}</p>
-        </template>
+        </div>
+    <!-- </div> -->
+    
+    
+    <lightning-card>
+        <!-- Instructions -->
+        <H1 style="text-align:center; font-size:30px; font-weight:bold; font-family:'Georgia'">Exam Instruction</H1>
+        <p class="instruction-text">                 
+            Please follow these exam guidelines carefully. After reviewing the instructions, 
+            select a suitable date for your exam from the available slots.
+        </p>
+        <div class="slds-grid slds-wrap slds-p-around_medium">
+            <template for:each={interviewTips} for:item="tip">
+                <div key={tip.id} class="slds-col slds-size_1-of-2 slds-p-around_small">
+                    <div class="instruction-card">
+                        <h3 class="card-title">{tip.title}</h3>
+                        <p class="card-content">{tip.content}</p>
+                    </div>
+                </div>
+            </template>
+        </div>
     </lightning-card>
+    
+    <!-- Date Slots - Wrapped in a single card -->
+    <!-- <lightning-card> -->
+        
+        
+    <!-- </lightning-card> -->
+
+    <!-- ✅ Display success message -->
+   
 </template>
